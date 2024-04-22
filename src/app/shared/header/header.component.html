@@ -1,0 +1,41 @@
+<div id="header">
+  <h1>DN Origins Database</h1>
+  <nav id="nav">
+    <ul>
+      <li class="current"><a href="index.html">Home</a></li>
+      <li><a href="left-sidebar.html">Left Sidebar</a></li>
+      <li><a href="right-sidebar.html">Right Sidebar</a></li>
+      <li><a href="no-sidebar.html">No Sidebar</a></li>
+      <li class="dropdown" (click)="levelOneOpened ? null : dropDownOpened = !dropDownOpened">
+        <a href="#">Dropdown</a>
+        @if(dropDownOpened) {
+          <ul class="dropotron level-0">
+            <li><a href="#">Lorem ipsum dolor</a></li>
+            <li (click)="levelOneOpened = false"><a href="#">Magna phasellus</a></li>
+            <li><a href="#">Etiam dolore nisl</a></li>
+            <li (click)="levelOneOpened = !levelOneOpened" [ngClass]="{'active': levelOneOpened}">
+              <a href="#">Phasellus consequat <span class="more">></span></a>
+              @if(levelOneOpened) {
+                <ul class="dropotron level-1">
+                  <li><a href="#">Magna phasellus</a></li>
+                  <li><a href="#">Etiam dolore nisl</a></li>
+                  <li><a href="#">Veroeros feugiat</a></li>
+                  <li><a href="#">Nisl sed aliquam</a></li>
+                  <li><a href="#">Dolore adipiscing</a></li>
+                </ul>
+              }
+            </li>
+            <li><a href="#">Veroeros feugiat</a></li>
+          </ul>
+        }
+      </li>
+    </ul>
+  </nav>
+</div>
+<div id="titleBar">
+  <a href="#navPanel" class="toggle"></a>
+</div>
+
+@if(dropDownOpened || levelOneOpened) {
+  <div class="backdrop" (click)="levelOneOpened = false; dropDownOpened = false"></div>
+}
