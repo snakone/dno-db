@@ -1,0 +1,32 @@
+.dropdown-menu, .dropdown-submenu {
+  margin-top: 1em;
+  background-color: rgba(34, 30, 31, 0.98) !important;
+}
+
+.dropdown-submenu {
+  margin-top: 0;
+  margin-left: 1em;
+}
+
+button[mat-menu-item] {
+  & span {
+		font-family: 'Source Sans Pro' !important;
+		font-weight: 300 !important;
+		color: #ccc;
+		font-size: 14px !important;
+		line-height: 1.75em !important;
+  }
+
+  &:hover span {
+    color: var(--active-color);
+  }
+}
+
+.mat-mdc-menu-item .mat-mdc-menu-submenu-icon {
+  color: var(--active-color) !important;
+  margin-top: 3px;
+}
+
+.mat-mdc-menu-item {
+  min-height: 36px !important;
+}

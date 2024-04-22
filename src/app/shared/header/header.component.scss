@@ -45,8 +45,8 @@ margin: 0;
   background: #f3f3f3;
 }
 
-#nav > ul > li.current > a {
-  background: #d52349;
+#nav > ul > li.active > a {
+  background: var(--active-color);
   color: #fff !important;
   font-weight: 700;
 }
@@ -90,7 +90,7 @@ margin: 0;
   margin-top: 2em;
 
   & li.active > a {
-    color: #d52349;
+    color: var(--active-color);
   }
 
   & li a {
@@ -117,7 +117,7 @@ margin: 0;
   top: -10px;
   border-left: solid 10px transparent;
   border-right: solid 10px transparent;
-  border-bottom: solid 10px #d52349;
+  border-bottom: solid 10px var(--active-color);
 }
 
 .dropotron.level-1:before {
@@ -128,18 +128,30 @@ margin: 0;
     margin-left: -20px;
     top: 25px;
     border-left: solid 10px transparent;
-    border-right: solid 10px #d52349;
+    border-right: solid 10px ;
     border-bottom: solid 10px transparent;
     border-top: solid 10px transparent;
 }
 
-.dropdown ul {
-  position: absolute;
-  z-index: 999;
+.dropdown {
+  cursor: pointer;
 
-  &.level-1 {
-    left: 142%;
+  & ul {
+    position: absolute;
+    z-index: 999;
+  
+    &.level-1 {
+      left: 142%;
+    }
   }
+
+  &:hover {
+    color: var(--active-color);
+  }
+}
+
+li.active button {
+  color: red
 }
 
 .backdrop {
@@ -149,4 +161,10 @@ margin: 0;
   top: 0;
   left: 0;
   z-index: 15;
+}
+
+@media (min-width: 981px) {
+  q-drawer {
+    display: none;
+  }
 }

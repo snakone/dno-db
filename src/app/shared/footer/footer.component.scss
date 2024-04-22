@@ -3,7 +3,7 @@
 #footer {
   position: relative;
   color: #858484;
-  padding: 4em 0 3.8em 0;
+  padding: 4em 0 2em 0;
   background-color: #252122;
 }
 
@@ -43,4 +43,20 @@
 
 #footer header h2 {
   font-size: 1.75em;
+}
+
+@media (max-width: 980px) {
+  #footer {
+    padding: 4em 0 1em 0 !important;
+  }
+
+  h2.col-small {
+    border-top: solid 1px #ddd;
+    border-top-color: rgba(255, 255, 255, 0.05);
+    padding-top: 3.7rem;
+  }
+
+  .col-4.col-12-medium {
+    padding-top: 0 !important;
+  }
 }
