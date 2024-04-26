@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { DropDownMenuItem } from '../types/interfaces';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
+import { Observable, debounceTime, distinctUntilChanged, filter, fromEvent, map } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -23,7 +24,19 @@ export class HeaderComponent {
   @ViewChild('drawer', {static: true}) drawer!: ElementRef;
   @ViewChild('trigger', {static: false}) menuTrigger!: MatMenuTrigger;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.$isMenuOpened().subscribe(res => this.dropDownOpened = res);
+  }
+
+  public $isMenuOpened(): Observable<boolean> {
+    return fromEvent(document, "touchend")
+    .pipe(
+        debounceTime(400),
+        filter(_ => Boolean(this.drawer)),
+        map(_ => this.drawer.nativeElement.isOpen() as boolean),
+        distinctUntilChanged(),
+    )
+  }
 
   public openDrawer(): void {
     if(this.drawer) {
@@ -54,10 +67,6 @@ export class HeaderComponent {
   public goToCalc(): void {
     this.menuTrigger.closeMenu();
     this.router.navigateByUrl("/calculators");
-  }
-
-  foo(e: any) {
-    console.log(e)
   }
 
 }

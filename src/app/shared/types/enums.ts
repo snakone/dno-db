@@ -1,8 +1,20 @@
 export type CAPS_TYPES = 40 | 50 | 60 | 70 | 80;
-export type UPGRADE_LEVELS = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15;
+export type UPGRADE_LEVELS = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15;
 
-export enum DNO_ITEM_GRADES {
+export enum DNO_CLASSES {
+  WARRIOR = "Warrior",
+  ARCHER = "Archer",
+  SORCERESS = "Sorceress",
+  CLERIC = "Cleric",
+  ACADEMIC = "Academic",
+  KALI = "Kali",
+  ASSASSIN = "Assassin",
+  LANCEA = "Lancea"
+}
+
+export enum DNO_ITEM_RARITY {
   NORMAL = "Normal",
+  MAGIC = "Magic",
   RARE = "Rare",
   EPIC = "Epic",
   UNIQUE = "Unique",
@@ -10,14 +22,35 @@ export enum DNO_ITEM_GRADES {
 }
 
 export enum DNO_ITEM_SETS {
-  MINOTAUR = "Minotaur",
+  MINOTAUR = "Red Army",
   CERBERUS = "Cerberus",
   MANTICORE = "Manticore",
-  APOCALPISIS = "Apocalipsis",
-  ARCHIBISHOP = "Archibishop",
-  PROFFESOR = "Proffesor.K",
+  APOCALYPSE = "Apocalypse",
+  ARCHBISHOP = "Ancient Totem",
+  GIGANTES = "Inmortal",
+  DANGEROUS = "Dangerous Desire's",
+  TWISTED = "Twisted Obsession's",
+  HONOURABLE = "Honourable Tribe's",
   NEW_MOON = "New Moon",
   FULL_MOON = "Full Moon",
+  FLINT = "Flint",
+  CINDER = "Cinder",
+  EMERALD = "Emerald Dragon",
+  DESERT = "Desert Dragon",
+  BLACK = "Black Dragon",
+  RED = "Red Dragon",
+  SEA_LEGEND = "Legend Sea Dragon",
+  EMERALD_LEGEND = "Legend Emerald Dragon",
+  DESERT_LEGEND = "Legend Desert Dragon",
+  BLACK_LEGEND = "Legend Black Dragon"
 }
 
-export type DNO_ITEM_PIECE_TYPE = "Armour" | "Weapon";
+export enum DNO_ITEM_PIECE_TYPE {
+  HELM = "Helm",
+  ARMOUR = "Upper Body",
+  LEGS = "Lower Body",
+  GLOVES = "Gloves",
+  SHOES = "Shoes",
+  WEAPON = "Primary Weapon",
+  SECONDARY = "Secondary Weapon"
+}

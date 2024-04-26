@@ -6,10 +6,15 @@ form {
   margin-bottom: 2.5em;
 }
 
-input {
-  margin-bottom: 1em;
+.form-control {
+  margin-bottom: 1.5em;
 }
 
 select {
   background: url("../../../assets/images/arrow-down.png") no-repeat right;
+}
+
+button[disabled] {
+  pointer-events: none;
+  filter: grayscale(2);
 }

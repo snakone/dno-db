@@ -31,7 +31,9 @@
 </div>
 
 <div id="titleBar">
-  <span class="toggle" (click)="dropDownOpened ? closeDrawer() : openDrawer()"></span>
+  <span [class]="dropDownOpened ? 'toggle-close' : 'toggle'"
+  (click)="dropDownOpened ? closeDrawer() : openDrawer()"></span>
+
 </div>
 
 <q-drawer menuid="main" #drawer>

@@ -27,6 +27,7 @@ section, summary, time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 article, aside, details, figcaption, figure,
@@ -1438,6 +1439,7 @@ input, select, textarea {
 	}
 
 	form input[type=text],
+  form input[type=number],
 	form input[type=email],
 	form input[type=password],
 	form select,
@@ -1452,10 +1454,13 @@ input, select, textarea {
 		border: solid 1px #dddddd;
 		background: #fff;
 		width: 100%;
+    z-index: 999;
+    position: relative;
 	}
 
 		form input[type=text]:focus,
 		form input[type=email]:focus,
+    form input[type=number]:focus,
 		form input[type=password]:focus,
 		form select:focus,
 		form textarea:focus {
@@ -2278,6 +2283,7 @@ input, select, textarea {
 				width: 100%;
 				z-index: 10001;
 				background: none;
+        cursor: pointer;
 			}
 
 				#titleBar .toggle {
@@ -2286,7 +2292,7 @@ input, select, textarea {
 					height: 60px;
 				}
 
-					#titleBar .toggle:before {
+					#titleBar .toggle:before, #titleBar .toggle-close:before {
 						-moz-osx-font-smoothing: grayscale;
 						-webkit-font-smoothing: antialiased;
 						display: inline-block;
@@ -2299,8 +2305,7 @@ input, select, textarea {
 						font-weight: 900;
 					}
 
-					#titleBar .toggle:before {
-            content: "\f0c9";
+          #titleBar .toggle:before, #titleBar .toggle-close:before {
             display: block;
             position: absolute;
             right: 10px;
@@ -2313,6 +2318,14 @@ input, select, textarea {
             text-align: center;
             background: rgba(150, 150, 150, 0.75);
             border-radius: 5px;
+          }
+
+          #titleBar .toggle:before {
+            content: "\f0c9";
+					}
+
+          #titleBar .toggle-close:before {
+            content: "\f00d";
 					}
 
 					#titleBar .toggle:active:before {
