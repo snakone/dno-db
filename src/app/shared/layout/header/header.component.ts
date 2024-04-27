@@ -1,28 +1,33 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { DropDownMenuItem } from '../types/interfaces';
+import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
-import { Observable, debounceTime, distinctUntilChanged, filter, fromEvent, map } from 'rxjs';
+
+import { 
+  Observable,
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  fromEvent,
+  map,
+  tap
+} from 'rxjs';
+
+import { HEADER_ITEMS } from '@shared/app.data';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class HeaderComponent {
 
+  @ViewChild('drawer', { static: true }) drawer!: ElementRef;
+  @ViewChild('trigger', { static: false }) menuTrigger!: MatMenuTrigger;
+
   dropDownOpened = false;
-
-  items: DropDownMenuItem[] = [
-    { label: 'Home', route: '/home' },
-    { label: 'Left Sidebar', route: '#' },
-    { label: 'Right Sidebar', route: '#' },
-    { label: 'About', route: '/about' },
-  ];
-
-  @ViewChild('drawer', {static: true}) drawer!: ElementRef;
-  @ViewChild('trigger', {static: false}) menuTrigger!: MatMenuTrigger;
+  items = HEADER_ITEMS;
 
   constructor(private router: Router) {
     this.$isMenuOpened().subscribe(res => this.dropDownOpened = res);
@@ -30,18 +35,19 @@ export class HeaderComponent {
 
   public $isMenuOpened(): Observable<boolean> {
     return fromEvent(document, "touchend")
-    .pipe(
+      .pipe(
         debounceTime(400),
         filter(_ => Boolean(this.drawer)),
         map(_ => this.drawer.nativeElement.isOpen() as boolean),
         distinctUntilChanged(),
-    )
+        tap(open => open && window.innerWidth > 980 ? this.closeDrawer() : null)
+      )
   }
 
   public openDrawer(): void {
-    if(this.drawer) {
+    if (this.drawer) {
       try {
-        if(this.drawer.nativeElement.isOpen()) {
+        if (this.drawer.nativeElement.isOpen()) {
           this.closeDrawer();
           return;
         }
@@ -52,9 +58,9 @@ export class HeaderComponent {
   }
 
   public closeDrawer(): void {
-    if(this.drawer) {
+    if (this.drawer) {
       try {
-        if(!this.drawer.nativeElement.isOpen()) {
+        if (!this.drawer.nativeElement.isOpen()) {
           this.openDrawer();
           return;
         }

@@ -1,16 +1,18 @@
-import { 
+import {
   CAPS_TYPES,
   DNO_ITEM_RARITY,
   DNO_ITEM_PIECE_TYPE,
   DNO_ITEM_SETS,
-  UPGRADE_LEVELS, 
+  UPGRADE_LEVELS,
   DNO_CLASSES
 } from "./enums";
 
-export interface DropDownMenuItem {
-  route: string;
+export interface SimpleItem {
+  key: string;
   label: string;
 }
+
+export interface DropDownMenuItem extends SimpleItem { }
 
 export interface SetCraftDNO {
   id: string;

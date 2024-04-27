@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app.routing';
-import { AppComponent } from './app.component';
-import { HeaderModule } from './shared/header/header.module';
-import { FooterModule } from './shared/footer/footer.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
+import { AppComponent } from './app.component';
+import { HeaderModule } from '@layout/header/header.module';
+import { FooterModule } from '@layout/footer/footer.module';
 
 @NgModule({
   declarations: [

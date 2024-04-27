@@ -2,29 +2,19 @@ import { DNO_CLASSES, DNO_ITEM_SETS, DNO_ITEM_PIECE_TYPE } from "./enums";
 import { CalculationProps } from "./interfaces";
 
 export class Calculation {
-  class!: DNO_CLASSES;
-  set!: DNO_ITEM_SETS;
-  piece!: DNO_ITEM_PIECE_TYPE | "Full";
-  from!: number;
-  to!: number;
-  hp!: number;
-  mp!: number;
-  jellies!: boolean;
-  friendship!: boolean;
+  class: DNO_CLASSES = null!;
+  set: DNO_ITEM_SETS = null!;
+  piece: DNO_ITEM_PIECE_TYPE | "Full" = null!;
+  from: number = null!;
+  to: number = null!;
+  hp: number = null!;
+  mp: number = null!;
+  jellies: boolean = false;
+  friendship: boolean = false;
 
   constructor(args?: CalculationProps) {
-    if(args !== undefined) {
-      Object.assign(this, {...args});
-    } else {
-      this.class = null!;
-      this.set = null!;
-      this.piece = null!;
-      this.from = null!;
-      this.to = null!;
-      this.hp = null!;
-      this.mp = null!;
-      this.jellies = false;
-      this.friendship = false;
+    if (args) {
+      Object.assign(this, args);
     }
   }
 }

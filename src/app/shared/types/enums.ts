@@ -54,3 +54,8 @@ export enum DNO_ITEM_PIECE_TYPE {
   WEAPON = "Primary Weapon",
   SECONDARY = "Secondary Weapon"
 }
+
+export enum BINARY_LIST {
+  YES = "Yes",
+  NO = "No"
+}

@@ -7,20 +7,24 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () =>
       import('./pages/home/home.module')
-       .then(mod => mod.HomeModule), data: { name: 'Home' }
+        .then(mod => mod.HomeModule), data: { name: 'Home' }
   },
   {
     path: 'about',
     loadChildren: () =>
       import('./pages/about/about.module')
-       .then(mod => mod.AboutModule), data: { name: 'About' }
+        .then(mod => mod.AboutModule), data: { name: 'About' }
   },
   {
     path: 'calculators',
     loadChildren: () =>
       import('./pages/calculators/calculators.module')
-       .then(mod => mod.CalculatorsModule), data: { name: 'Calculators' }
+        .then(mod => mod.CalculatorsModule), data: { name: 'Calculators' }
   },
+  {
+    path: '**',
+    redirectTo: 'home'
+  }
 ];
 
 @NgModule({

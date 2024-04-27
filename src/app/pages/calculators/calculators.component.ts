@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
-import { CalculationsService } from 'src/app/core/services/calculations.service';
-import { DNO_CLASS_LIST, DNO_ITEM_PIECE_LIST, DNO_SET_LIST } from 'src/app/shared/data.dno';
-import { Calculation } from 'src/app/shared/types/classes';
-import { UPGRADE_LEVELS } from 'src/app/shared/types/enums';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+import { CalculationsService } from '@services/calculations.service';
+import { DNO_BINARY_LIST, DNO_CLASS_LIST, DNO_ITEM_PIECE_LIST, DNO_SET_LIST } from '@shared/data.dno';
+import { Calculation } from '@typed/classes';
+import { UPGRADE_LEVELS } from '@typed/enums';
 
 @Component({
   selector: 'app-calculators',
   templateUrl: './calculators.component.html',
-  styleUrl: './calculators.component.scss'
+  styleUrl: './calculators.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class CalculatorsComponent {
@@ -15,13 +17,8 @@ export class CalculatorsComponent {
   setList = DNO_SET_LIST;
   classList = DNO_CLASS_LIST;
   pieceList = DNO_ITEM_PIECE_LIST;
-
-  jellyList = [
-    { label : 'No', key: false },
-    { label: 'Yes', key: true },
-  ];
-
-  friendList = [...this.jellyList];
+  jellyList = DNO_BINARY_LIST;
+  friendList = DNO_BINARY_LIST;
   totalSuccess: number = 0;
   totalFails: number = 0;
 

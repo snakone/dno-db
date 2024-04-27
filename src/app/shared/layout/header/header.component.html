@@ -1,11 +1,11 @@
-<div id="header">
+<div id="header" StickyNav>
   <h1>DN Origins Database</h1>
   <nav id="nav">
     <ul>
       @for(item of items; track item.label) {
-        <li [routerLinkActive]="'active'">
-          <a [routerLink]="item.route">{{item.label}}</a>
-        </li>
+      <li [routerLinkActive]="'active'">
+        <a [routerLink]="item.key">{{item.label}}</a>
+      </li>
       }
       <li class="dropdown" #trigger="matMenuTrigger" [matMenuTriggerFor]="database">Dropdown</li>
       <mat-menu #database="matMenu" [class]="'dropdown-menu'">
@@ -32,7 +32,7 @@
 
 <div id="titleBar">
   <span [class]="dropDownOpened ? 'toggle-close' : 'toggle'"
-  (click)="dropDownOpened ? closeDrawer() : openDrawer()"></span>
+    (click)="dropDownOpened ? closeDrawer() : openDrawer()"></span>
 
 </div>
 

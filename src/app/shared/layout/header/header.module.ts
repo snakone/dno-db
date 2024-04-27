@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './header.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
+
+import { HeaderComponent } from './header.component';
+import { DirectivesModule } from '@directives/directives.module';
 
 const Material = [
   MatMenuModule
@@ -14,7 +16,8 @@ const Material = [
   imports: [
     CommonModule,
     ...Material,
-    RouterModule
+    RouterModule,
+    DirectivesModule
   ],
   exports: [
     HeaderComponent
