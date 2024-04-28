@@ -10,6 +10,18 @@ const routes: Routes = [
         .then(mod => mod.HomeModule), data: { name: 'Home' }
   },
   {
+    path: 'database',
+    loadChildren: () =>
+      import('./pages/database/database.module')
+        .then(mod => mod.DatabaseModule), data: { name: 'Database' }
+  },
+  {
+    path: 'guides',
+    loadChildren: () =>
+      import('./pages/guides/guides.module')
+        .then(mod => mod.GuidesModule), data: { name: 'Guides' }
+  },
+  {
     path: 'about',
     loadChildren: () =>
       import('./pages/about/about.module')

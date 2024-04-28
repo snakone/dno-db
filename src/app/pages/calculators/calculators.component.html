@@ -19,7 +19,9 @@
       <form>
         <div class="form-control">
           <label for="class">Choose a Class:</label>
+          
           <select name="class" title="class" [(ngModel)]="calculation.class" required>
+            <option value="None" disabled selected>Desired Character Class...</option>
             @for(className of classList; track className) {
             <option [value]="className.key">{{className.label}}</option>
             }
@@ -28,6 +30,7 @@
         <div class="form-control">
           <label for="set">Choose a Set:</label>
           <select name="set" title="set" [(ngModel)]="calculation.set">
+            <option value="None" disabled selected>Desired Craft Set...</option>
             @for(setName of setList; track setName) {
             <option [value]="setName.key">{{setName.label}}</option>
             }
@@ -36,6 +39,7 @@
         <div class="form-control">
           <label for="set">Choose a Piece:</label>
           <select name="piece" title="piece" [(ngModel)]="calculation.piece">
+            <option value="None" disabled selected>Desired Craft Set Piece...</option>
             @for(pieceName of pieceList; track pieceName) {
             <option [value]="pieceName.key">{{pieceName.label}}</option>
             }
@@ -46,21 +50,22 @@
           <div class="col-4">
             <div class="form-control">
               <label for="min">From Grade:</label>
-              <input type="number" [(ngModel)]="calculation.from" min="0" max="14" name="min"
+              <input type="number" [(ngModel)]="calculation.from" min="0" max="14" name="min" placeholder="Min 0"
                 oninput="this.value = this.value > 14 ? 14 : Math.abs(this.value)" />
             </div>
           </div>
           <div class="col-4">
             <div class="form-control">
               <label for="max">To Grade:</label>
-              <input type="number" [(ngModel)]="calculation.to" min="1" max="15" name="max"
+              <input type="number" [(ngModel)]="calculation.to" min="1" max="15" name="max" placeholder="Max 15"
                 oninput="this.value = this.value > 15 ? 15 : this.value < 1 ? 1 : Math.abs(this.value)" />
             </div>
           </div>
           <div class="col-4">
             <div class="form-control">
-              <label for="jellies">Jellies?</label>
+              <label for="jellies">Protection Jellies?</label>
               <select name="jellies" title="jellies" [(ngModel)]="calculation.jellies">
+                <option value="false" disabled selected>Are you using this?</option>
                 @for(jellyName of jellyList; track jellyName) {
                 <option [value]="jellyName.key">{{jellyName.label}}</option>
                 }
@@ -72,19 +77,20 @@
           <div class="col-4">
             <div class="form-control">
               <label for="hp">Current HP:</label>
-              <input type="number" min="0" name="hp" [(ngModel)]="calculation.hp" />
+              <input type="number" min="0" name="hp" [(ngModel)]="calculation.hp" placeholder="Your total HP"/>
             </div>
           </div>
           <div class="col-4">
             <div class="form-control">
               <label for="mp">Current MP:</label>
-              <input type="number" min="0" name="mp" [(ngModel)]="calculation.mp" />
+              <input type="number" min="0" name="mp" [(ngModel)]="calculation.mp" placeholder="Your total MP"/>
             </div>
           </div>
           <div class="col-4">
             <div class="form-control">
-              <label for="friendship">Friendship Bonus?</label>
+              <label for="friendship">Alliance Friendship Bonus?</label>
               <select name="friendship" title="friendship" [(ngModel)]="calculation.friendship">
+                <option value="false" disabled selected>Discount Bonus...</option>
                 @for(friendName of friendList; track friendName) {
                 <option [value]="friendName.key">{{friendName.label}}</option>
                 }
@@ -94,11 +100,11 @@
         </div>
       </form>
       <button class="button" [disabled]="!calculation.class || 
-                            !calculation.set || 
-                            !calculation.piece || 
-                            !calculation.from || 
-                            !calculation.to ||
-                            calculation.from >= calculation.to" (click)="calculate();">Calculate!
+                          !calculation.set || 
+                          !calculation.piece || 
+                          calculation.from == undefined ||
+                          !calculation.to ||
+                          calculation.from >= calculation.to" (click)="calculate();">Calculate!
       </button>
       @if(totalFails || totalSuccess) {
       <div>Success: {{totalSuccess}}</div>

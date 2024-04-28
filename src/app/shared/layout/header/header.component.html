@@ -1,4 +1,4 @@
-<div id="header" StickyNav>
+<div id="header">
   <h1>DN Origins Database</h1>
   <nav id="nav">
     <ul>
@@ -7,7 +7,7 @@
         <a [routerLink]="item.key">{{item.label}}</a>
       </li>
       }
-      <li class="dropdown" #trigger="matMenuTrigger" [matMenuTriggerFor]="database">Dropdown</li>
+      <li class="dropdown" #trigger="matMenuTrigger" [matMenuTriggerFor]="database">Menu</li>
       <mat-menu #database="matMenu" [class]="'dropdown-menu'">
         <li>
           <button mat-menu-item>Vertebrates</button>
@@ -16,11 +16,11 @@
           <button mat-menu-item>Invertebrates</button>
         </li>
         <li>
-          <button mat-menu-item [matMenuTriggerFor]="calculators" (click)="goToCalc()">Calculators</button>
+          <button mat-menu-item [matMenuTriggerFor]="calculators">Calculators</button>
         </li>
       </mat-menu>
       <mat-menu #calculators="matMenu" [class]="'dropdown-submenu'">
-        <button mat-menu-item>Fishes</button>
+        <button mat-menu-item [routerLink]="'/calculators'">Enhancement</button>
         <button mat-menu-item>Amphibians</button>
         <button mat-menu-item>Reptiles</button>
         <button mat-menu-item>Birds</button>

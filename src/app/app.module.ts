@@ -6,6 +6,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { AppComponent } from './app.component';
 import { HeaderModule } from '@layout/header/header.module';
 import { FooterModule } from '@layout/footer/footer.module';
+import { SnippetsModule } from '@shared/snippets/snippets.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FooterModule } from '@layout/footer/footer.module';
     BrowserModule,
     AppRoutingModule,
     HeaderModule,
-    FooterModule
+    FooterModule,
+    SnippetsModule
   ],
   providers: [
     provideAnimationsAsync()

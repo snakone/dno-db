@@ -9,7 +9,8 @@ export enum DNO_CLASSES {
   ACADEMIC = "Academic",
   KALI = "Kali",
   ASSASSIN = "Assassin",
-  LANCEA = "Lancea"
+  LANCEA = "Lancea",
+  NONE = "None"
 }
 
 export enum DNO_ITEM_RARITY {
@@ -42,7 +43,8 @@ export enum DNO_ITEM_SETS {
   SEA_LEGEND = "Legend Sea Dragon",
   EMERALD_LEGEND = "Legend Emerald Dragon",
   DESERT_LEGEND = "Legend Desert Dragon",
-  BLACK_LEGEND = "Legend Black Dragon"
+  BLACK_LEGEND = "Legend Black Dragon",
+  NONE = "None"
 }
 
 export enum DNO_ITEM_PIECE_TYPE {
@@ -52,10 +54,11 @@ export enum DNO_ITEM_PIECE_TYPE {
   GLOVES = "Gloves",
   SHOES = "Shoes",
   WEAPON = "Primary Weapon",
-  SECONDARY = "Secondary Weapon"
+  SECONDARY = "Secondary Weapon",
+  NONE = "None"
 }
 
 export enum BINARY_LIST {
   YES = "Yes",
-  NO = "No"
+  NO = "No",
 }

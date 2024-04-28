@@ -12,5 +12,5 @@ type EnumTypes = typeof DNO_ITEM_SETS |
                  typeof BINARY_LIST;
 
 function returnListFromEnum(value: EnumTypes): SimpleItem[] {
-  return Object.entries(value).map(([key, value]) => ({ key, label: value }));
+  return Object.entries(value).filter(([key, value]) => key !== 'NONE').map(([key, value]) => ({ key, label: value }));
 }

@@ -2,7 +2,7 @@ import { DropDownMenuItem } from "./types/interfaces";
 
 export const HEADER_ITEMS: DropDownMenuItem[] = [
   { label: 'Home', key: '/home' },
-  { label: 'Left Sidebar', key: '#' },
-  { label: 'Right Sidebar', key: '#' },
+  { label: 'Database', key: '/database' },
+  { label: 'Guides', key: '/guides' },
   { label: 'About', key: '/about' },
 ];

@@ -8,6 +8,17 @@ form {
 
 .form-control {
   margin-bottom: 1.5em;
+
+  & input {
+    transition: 100ms border ease-in-out;
+  }
+
+  &:hover {
+    input, select {
+      cursor: pointer;
+      border-color: var(--active-color);
+    }
+  }
 }
 
 select {

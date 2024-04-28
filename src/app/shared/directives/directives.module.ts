@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavDirective } from './sticky-nav.directive';
+import { ScrollTopDirective } from './scroll-top.directive';
 
 @NgModule({
   declarations: [
-    NavDirective
+    ScrollTopDirective
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    NavDirective
+    ScrollTopDirective
   ]
 })
 
