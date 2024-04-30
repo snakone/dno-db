@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
+import { HEADER_ITEMS } from '@shared/app.data';
 
 import { 
   Observable,
@@ -11,8 +12,6 @@ import {
   map,
   tap
 } from 'rxjs';
-
-import { HEADER_ITEMS } from '@shared/app.data';
 
 @Component({
   selector: 'app-header',

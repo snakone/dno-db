@@ -51,6 +51,9 @@
       "@typed/*": [
         "app/shared/types/*"
       ],
+      "@store/*": [
+        "app/core/ngrx/*"
+      ],
     },
   },
   "angularCompilerOptions": {

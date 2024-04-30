@@ -3,9 +3,7 @@ import { Injectable, WritableSignal, signal } from '@angular/core';
 import { Calculation } from '@typed/classes';
 import { UPGRADE_LEVELS } from '@typed/enums';
 
-const switchGrade: Partial<Record<UPGRADE_LEVELS, number>> = {
-  7: 45, 8: 40, 9: 35, 10: 30, 11: 25, 12: 20, 13: 15, 14: 10, 15: 5
-}
+
 
 @Injectable({ providedIn: 'root' })
 
@@ -20,10 +18,4 @@ export class CalculationsService {
     this.calculation.set(calc);
   }
 
-  public getRateFromGrade(grade: UPGRADE_LEVELS): number {
-    if (Number(grade) <= 6) {
-      return 100;
-    }
-    return switchGrade[grade] || 100;
-  }
 }

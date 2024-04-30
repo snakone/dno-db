@@ -31,7 +31,6 @@ export class ScrollTopDirective {
   }
 
   private onScroll(): void {
-    console.log('scroll')
     try {
       const scroll = window.scrollY || document.documentElement.scrollTop || 0;
       if ((scroll > limit && this.displayed) || (scroll < limit && !this.displayed)) {

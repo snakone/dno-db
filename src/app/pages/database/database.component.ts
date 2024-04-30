@@ -6,6 +6,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrl: './database.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class DatabaseComponent {
 
 }

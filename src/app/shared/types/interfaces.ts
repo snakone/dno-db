@@ -47,3 +47,8 @@ export interface CalculationProps {
   jellies: boolean;
   friendship: boolean;
 }
+
+export interface CalculationResult {
+  totalSuccess: number;
+  totalFails: number;
+}
