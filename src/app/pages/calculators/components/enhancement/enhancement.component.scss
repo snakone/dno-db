@@ -2,8 +2,41 @@
   padding-top: 3em;
 }
 
+.row {
+  margin-bottom: 1.5em;
+}
+
 form {
   margin-bottom: 2.5em;
+
+  & h3 {
+    margin-bottom: .75em;
+    position: relative;
+
+    &::after {
+      content: "";
+      background-color: var(--active-color);
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 15px;
+      height: 3px;
+    }
+
+    & span {
+      opacity: .6;
+      font-size: initial;
+      position: relative;
+      top: -1.5px;
+    }
+
+    & i {
+      color: green;
+      position: relative;
+      left: 1em;
+      font-size: 1em;
+    }
+  }
 }
 
 .form-control {
@@ -28,4 +61,15 @@ select {
 button[disabled] {
   pointer-events: none;
   filter: grayscale(2);
+  opacity: .7;
+}
+
+footer {
+  & button {
+    margin-right: 2em;
+
+    &.reset {
+      filter: grayscale(1.5);
+    }
+  }
 }

@@ -1,7 +1,7 @@
 /* Header */
 #header {
   position: relative;
-  background: #ffffff;
+  background: var(--light-color);
   border-bottom: solid 1px #ccc;
   padding: 4em 0;
   text-align: center;
@@ -9,7 +9,7 @@
 }
 
 #header h1 {
-  color: #252122;
+  color: var(--dark-color);
   font-weight: 900;
   font-size: 2.5em;
   letter-spacing: -0.035em;
@@ -22,7 +22,8 @@
 }
 
 #nav > ul {
-margin: 0;
+  margin: 0;
+  padding-left: 0;
 }
 
 #nav > ul > li {
@@ -49,94 +50,14 @@ margin: 0;
 
 #nav > ul > li.active > a {
   background: var(--active-color);
-  color: #fff !important;
+  color: var(--light-color) !important;
   font-weight: 700;
-}
-
-.dropdown, .dropotron {
-  position: relative;
-}
-
-.dropotron {
-  border-radius: 5px;
-  background-color: #252122;
-  background-color: rgba(34, 30, 31, 0.98);
-  font-style: italic;
-  min-width: 13em;
-  box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.5);
-  padding: 1.25em 1.8em 1.25em 1.5em;
-  text-align: left;
-  margin-top: -3em;
-  margin-left: -3.1em;
-  list-style: none;
-}
-
-.dropotron a, .dropotron span {
-  color: #aaa;
-  text-decoration: none;
-  -moz-transition: color .25s ease-in-out;
-  -webkit-transition: color .25s ease-in-out;
-  -ms-transition: color .25s ease-in-out;
-  transition: color .25s ease-in-out;
-}
-
-.dropotron li {
-  padding: 0.25em 0 0.25em 0;
-}
-
-.dropotron li:hover > a, .dropotron li:hover > span {
-  color: #fff;
-}
-
-.dropotron.level-0 {
-  margin-top: 2em;
-
-  & li.active > a {
-    color: var(--active-color);
-  }
-
-  & li a {
-    & .more {
-      color: #fff;
-      font-weight: bold;
-      position: absolute;
-      margin-top: 1px;
-      right: 15px;
-    }
-  }
-}
-
-.dropotron.level-1 {
-  min-width: 11em;
-}
-
-.dropotron.level-0:before {
-  content: '';
-  display: block;
-  position: absolute;
-  left: 50%;
-  margin-left: -10px;
-  top: -10px;
-  border-left: solid 10px transparent;
-  border-right: solid 10px transparent;
-  border-bottom: solid 10px var(--active-color);
-}
-
-.dropotron.level-1:before {
-  content: "";
-    display: block;
-    position: absolute;
-    left: 0;
-    margin-left: -20px;
-    top: 25px;
-    border-left: solid 10px transparent;
-    border-right: solid 10px ;
-    border-bottom: solid 10px transparent;
-    border-top: solid 10px transparent;
 }
 
 .dropdown {
   cursor: pointer;
+  position: relative;
+  padding: 0 1.2em 0 1.2em;
 
   & ul {
     position: absolute;
@@ -152,10 +73,6 @@ margin: 0;
   }
 }
 
-li.active button {
-  color: red
-}
-
 .backdrop {
   width: 100%;
   height: 100%;
@@ -169,4 +86,13 @@ li.active button {
   q-drawer {
     display: none;
   }
+}
+
+.toggle {
+  position: fixed;
+  top: .6em;
+  left: .6em;
+  z-index: 9999;
+  display: inline;
+  cursor: pointer;
 }

@@ -28,7 +28,7 @@
   top: 0;
   display: block;
   z-index: -1;
-  box-shadow: 32px 0 0 0 #fff, 0 -32px 0 0 #fff, 0 32px 0 0 #fff, 32px 32px 0 0 #fff, 32px -32px 0 0 #fff, 0 0 32px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 32px 0 0 0 var(--light-color), 0 -32px 0 0 var(--light-color), 0 32px 0 0 var(--light-color), 32px 32px 0 0 var(--light-color), 32px -32px 0 0 var(--light-color), 0 0 32px 0 rgba(0, 0, 0, 0.15);
 }
 
 #intro .middle:after {
@@ -40,7 +40,7 @@
   top: 0;
   display: block;
   z-index: -1;
-  box-shadow: -32px 0 0 0 #fff, 0 -32px 0 0 #fff, 0 32px 0 0 #fff, -32px 32px 0 0 #fff, -32px -32px 0 0 #fff, 0 0 32px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: -32px 0 0 0 var(--light-color), 0 -32px 0 0 var(--light-color), 0 32px 0 0 var(--light-color), -32px 32px 0 0 var(--light-color), -32px -32px 0 0 var(--light-color), 0 0 32px 0 rgba(0, 0, 0, 0.15);
 }
 
 #intro .button {

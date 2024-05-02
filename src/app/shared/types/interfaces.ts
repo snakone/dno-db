@@ -4,7 +4,8 @@ import {
   DNO_ITEM_PIECE_TYPE,
   DNO_ITEM_SETS,
   UPGRADE_LEVELS,
-  DNO_CLASSES
+  DNO_CLASSES,
+  BINARY_LIST
 } from "./enums";
 
 export interface SimpleItem {
@@ -44,11 +45,21 @@ export interface CalculationProps {
   to: number;
   hp?: number;
   mp?: number;
-  jellies: boolean;
-  friendship: boolean;
+  jellies: BINARY_LIST;
+  friendship: BINARY_LIST;
+  rarity: DNO_ITEM_RARITY;
 }
 
 export interface CalculationResult {
   totalSuccess: number;
   totalFails: number;
+  totalBreaks: number;
+  totalDecreases: number;
+}
+
+export interface UpdateItem {
+  date: string;
+  title: string;
+  body: string;
+  url: string;
 }

@@ -61,4 +61,12 @@ export enum DNO_ITEM_PIECE_TYPE {
 export enum BINARY_LIST {
   YES = "Yes",
   NO = "No",
+  NONE = "None"
+}
+
+export enum ENHANCEMENT_RESULT {
+  SUCCESS = "Success",
+  FAIL = "Fail",
+  BREAK = "Break",
+  DECREASE = "Decrease"
 }

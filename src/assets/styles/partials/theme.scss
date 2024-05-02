@@ -111,7 +111,7 @@ section {
 
 body {
   line-height: 1;
-  background-color: #ffffff;
+  background-color: var(--light-color);
   overflow-x: hidden;
   width: 100%;
   height: 100%;
@@ -194,7 +194,7 @@ select {
 
 strong,
 b {
-  color: #252122;
+  color: var(--dark-color);
   font-weight: 400;
 }
 
@@ -227,7 +227,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #252122;
+  color: var(--dark-color);
   font-weight: 700;
 }
 
@@ -1574,7 +1574,7 @@ header.major {
 }
 
 header.major h2 {
-  background: #f7f7f7;
+  background: var(--section-color);
   position: relative;
   top: -0.65em;
   display: inline;
@@ -1589,7 +1589,7 @@ footer {
 /* Box */
 
 .box {
-  background: #ffffff;
+  background: var(--light-color);
   border-bottom: solid 1px #ccc;
   padding: 2.75em 1.75em 2.75em 1.75em;
 }
@@ -1765,7 +1765,7 @@ ul.dates .date {
   background-color: var(--active-color);
   height: 3.5em;
   text-align: center;
-  color: #fff;
+  color: var(--light-color);
   line-height: 1em;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -1786,6 +1786,7 @@ ul.dates .date strong {
   display: block;
   font-size: 1.75em;
   padding-top: 0.15em;
+  color: var(--light-color) !important;
 }
 
 ul.dates h3 {
@@ -1856,7 +1857,7 @@ ul.social li a {
 }
 
 ul.social li a:before {
-  color: #fff;
+  color: var(--light-color);
   font-size: 2em;
   line-height: 1.5em;
 }
@@ -1961,7 +1962,7 @@ ul.social li a.fa-google-plus:hover {
 .icon.featured:before {
   font-size: 4.5em;
   line-height: 1em;
-  color: #fff;
+  color: var(--light-color);
 }
 
 .icon.featured:after {
@@ -1975,11 +1976,11 @@ ul.social li a.fa-google-plus:hover {
 }
 
 .icon.featured.alt {
-  background-color: #252122;
+  background-color: var(--dark-color);
 }
 
 .icon.featured.alt:after {
-  border-top-color: #252122;
+  border-top-color: var(--dark-color);
 }
 
 .icon.featured.alt2 {
@@ -2001,7 +2002,7 @@ ul.social li a.fa-google-plus:hover {
 #main {
   position: relative;
   padding: 4em 0 4em 0;
-  background: #f7f7f7;
+  background: var(--section-color);
 }
 
 #main:before {
@@ -2254,7 +2255,7 @@ ul.social li a.fa-google-plus:hover {
     height: 30px;
     line-height: 31px;
     font-size: 20px;
-    color: #fff;
+    color: var(--light-color);
     text-align: center;
     background: rgba(150, 150, 150, 0.75);
     border-radius: 5px;
@@ -2290,7 +2291,7 @@ ul.social li a.fa-google-plus:hover {
     width: 240px;
     z-index: 10002;
     color: #858484;
-    background-color: #252122;
+    background-color: var(--dark-color);
     box-shadow: inset -3px 0px 5px 0px rgba(0, 0, 0, 0.35);
   }
 
@@ -2335,7 +2336,7 @@ ul.social li a.fa-google-plus:hover {
   }
 
   #navPanel .depth-0 {
-    color: #fff;
+    color: var(--light-color);
   }
 
 }

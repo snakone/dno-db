@@ -1,17 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
-import { Router } from '@angular/router';
 import { HEADER_ITEMS } from '@shared/app.data';
-
-import { 
-  Observable,
-  debounceTime,
-  distinctUntilChanged,
-  filter,
-  fromEvent,
-  map,
-  tap
-} from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -27,21 +16,9 @@ export class HeaderComponent {
 
   dropDownOpened = false;
   items = HEADER_ITEMS;
+  mode: string | undefined;
 
-  constructor(private router: Router) {
-    this.$isMenuOpened().subscribe(res => this.dropDownOpened = res);
-  }
-
-  public $isMenuOpened(): Observable<boolean> {
-    return fromEvent(document, "touchend")
-      .pipe(
-        debounceTime(400),
-        filter(_ => Boolean(this.drawer)),
-        map(_ => this.drawer.nativeElement.isOpen() as boolean),
-        distinctUntilChanged(),
-        tap(open => open && window.innerWidth > 980 ? this.closeDrawer() : null)
-      )
-  }
+  constructor() { }
 
   public openDrawer(): void {
     if (this.drawer) {
@@ -69,9 +46,9 @@ export class HeaderComponent {
     }
   }
 
-  public goToCalc(): void {
-    this.menuTrigger.closeMenu();
-    this.router.navigateByUrl("/calculators");
+  public toggleTheme(): void {
+    const isDark = document.body.classList.toggle('dark');
+    this.mode = isDark ? 'dark' : 'light';
   }
 
 }

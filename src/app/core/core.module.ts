@@ -4,7 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreEffects } from './ngrx/ngrx.index';
+import { StoreEffects, appReducers } from './ngrx/ngrx.index';
+import { HttpService } from './services/http/http.service';
 
 @NgModule({
   imports: [
@@ -14,10 +15,12 @@ import { StoreEffects } from './ngrx/ngrx.index';
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    StoreModule.forFeature('AppState', {}),
+    StoreModule.forFeature('AppState', appReducers),
     EffectsModule.forRoot([...StoreEffects]),
   ],
-  providers: [],
+  providers: [
+    HttpService
+  ],
 })
 
 export class CoreModule {

@@ -1,4 +1,12 @@
 <div id="header">
+  <div class="toggle" (click)="toggleTheme()">
+    <!-- THEME -->
+    @if(mode === 'dark') {
+        <i class="far fa-lightbulb" aria-label="light" aria-hidden="false"></i>
+    } @else {
+        <i class="far fa-moon" aria-label="dark" aria-hidden="false"></i>
+    }
+  </div>
   <h1>DN Origins Database</h1>
   <nav id="nav">
     <ul>
@@ -31,9 +39,8 @@
 </div>
 
 <div id="titleBar">
-  <span [class]="dropDownOpened ? 'toggle-close' : 'toggle'"
-    (click)="dropDownOpened ? closeDrawer() : openDrawer()"></span>
-
+  <span class="toggle"
+    (click)="openDrawer()"></span>
 </div>
 
 <q-drawer menuid="main" #drawer>
