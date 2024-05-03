@@ -11,3 +11,6 @@ export const calculateSuccess =
 
 export const calculateFailure =
   createAction('[Calculators] Calculate Failure', props<{error: string}>());
+
+// RESET
+export const reset = createAction('[Calculators] Reset');

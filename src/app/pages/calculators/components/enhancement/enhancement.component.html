@@ -5,7 +5,7 @@
       <a href="#" class="image featured"><img src="assets/images/merlin.png" alt="" /></a>
       <header>
         <h2>DNO Calculators - Enhancement</h2>
-        <p>In memory of Merlin</p>
+        <p>In memory of Blacksmith Merlin</p>
       </header>
       <p>
         Enhancement is a vital part of the game system within Dragon Nest which allows one to greatly improve the
@@ -15,17 +15,18 @@
         cost of enhancing.
       </p>
       <form>
-        <h3>Set Piece @if(calculation.class !== 'None' && 
-                          calculation.set !== 'None' && 
-                          calculation.piece !== 'None') {
-                          <i class="fas fa-check"></i>
-                        }
+        <h3>Set Piece @if(calculation.class !== 'None' &&
+          calculation.set !== 'None' &&
+          calculation.piece !== 'None') {
+          <i class="fas fa-check"></i>
+          }
         </h3>
         <div class="row">
           <div class="col-4 col-12-small">
             <div class="form-control">
               <label for="class">Choose a Class:</label>
-              <select name="class" title="class" [(ngModel)]="calculation.class" required>
+              <select name="class" title="class" [(ngModel)]="calculation.class" required
+                (ngModelChange)="onClassChange()">
                 <option value="None" disabled selected>Desired Character Class...</option>
                 @for(className of classList; track className) {
                 <option [value]="className.label">{{className.label}}</option>
@@ -36,7 +37,8 @@
           <div class="col-4 col-12-small">
             <div class="form-control">
               <label for="set">Choose a Set:</label>
-              <select name="set" title="set" [(ngModel)]="calculation.set">
+              <select name="set" title="set" [(ngModel)]="calculation.set" [disabled]="calculation.class === 'None'"
+                (ngModelChange)="onSetChange(calculation.class, calculation.set)">
                 <option value="None" disabled selected>Desired Craft Set...</option>
                 @for(setName of setList; track setName) {
                 <option [value]="setName.label">{{setName.label}}</option>
@@ -47,7 +49,8 @@
           <div class="col-4 col-12-small">
             <div class="form-control">
               <label for="set">Choose a Piece:</label>
-              <select name="piece" title="piece" [(ngModel)]="calculation.piece">
+              <select name="piece" title="piece" [(ngModel)]="calculation.piece"
+                [disabled]="calculation.class === 'None' || calculation.set === 'None'">
                 <option value="None" disabled selected>Desired Craft Set Piece...</option>
                 @for(pieceName of pieceList; track pieceName) {
                 <option [value]="pieceName.label">{{pieceName.label}}</option>
@@ -57,10 +60,9 @@
             </div>
           </div>
         </div>
-        <h3>Enhancement Grade @if(calculation.from !== undefined && 
-                                  calculation.from < calculation.to) {
-                                    <i class="fas fa-check"></i>
-                                }
+        <h3>Enhancement Grade @if(calculation.from !== undefined &&
+          calculation.from < calculation.to) { <i class="fas fa-check"></i>
+            }
         </h3>
         <div class="row">
           <div class="col-6">
@@ -74,6 +76,7 @@
             <div class="form-control">
               <label for="max">To Grade:</label>
               <input type="number" [(ngModel)]="calculation.to" min="0" max="15" name="max" placeholder="Max 15"
+                [disabled]="calculation.from == undefined"
                 oninput="this.value = this.value === '' ? null : this.value > 15 ? 15 : this.value < 1 ? 1 : Math.abs(this.value)" />
             </div>
           </div>
@@ -141,8 +144,6 @@
       </form>
       <footer>
         <button class="button reset" (click)="reset()">Reset</button>
-      
-       
         <button class="button" [disabled]="!calculation.class || 
                                           !calculation.set || 
                                           !calculation.piece || 
@@ -151,12 +152,50 @@
                                           calculation.from >= calculation.to" (click)="calculate();">Calculate!
         </button>
       </footer>
-     
+
       @if(result$ | async; as result) {
-      <div>Success: {{result.totalSuccess}}</div>
-      <div>Fails: {{result.totalFails}}</div>
-      <div>Breaks: {{result.totalBreaks}}</div>
-      <div>Decreases: {{result.totalDecreases}}</div>
+      <hr>
+      <div class="result animated fadeIn">
+        <h2>Enhancement Result</h2>
+        <p>Here are the results of the enhancement. Keep in mind that the calculations may not be one hundred percent
+          accurate and that each attempt is calculated <strong>randomly</strong>. This means that you can go from 0 to +12 without
+          failing once, and at the same time fail an attempt 50 times in a row. There is no pattern. 
+        </p>
+        <p>
+          Please take this for <strong>reference</strong> only.
+        </p>
+        <div class="stats">
+          <div class="success">
+            <i class="fas fa-check"></i> Success: {{result.totalSuccess}}
+          </div>
+          <div class="fail">
+            <i class="fas fa-times"></i> Fails: {{result.totalFails}}
+          </div>
+          <div class="break">
+            <i class="fas fa-heart-broken"></i> Breaks: {{result.totalBreaks}}
+          </div>
+          <div class="decrease">
+            <i class="fas fa-arrow-down"></i> Decreases: {{result.totalDecreases}}
+          </div>
+          <div class="total">
+            <i class="far fa-chart-bar"></i> Total: {{result.totalTries}}
+          </div>
+        </div>
+
+        @for (try of result.tries; track $index) {
+        <div class="try">
+          <div>from <strong>{{try.from}}</strong></div>
+          <div>to <strong>{{try.to}}</strong></div>
+          <div><strong>{{try.result}}</strong></div>
+          @if(try.decrease) {
+            <div class="red">-{{try.decrease}}</div>
+          }
+          <div class="badge" [class]="try.result.toLowerCase()" 
+                             [innerHTML]="getBadgeResult(try.result)">
+          </div>
+        </div>
+        }
+      </div>
       }
     </article>
   </div>

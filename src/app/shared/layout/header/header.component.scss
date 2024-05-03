@@ -34,7 +34,7 @@
 
 #nav > ul > li > a {
   border-radius: 5px;
-  color: #5d5d5d;
+  color: var(--text-color);
   text-decoration: none;
   padding: 0.6em 1.2em 0.6em 1.2em;
   -moz-transition: background-color .25s ease-in-out;
@@ -90,9 +90,14 @@
 
 .toggle {
   position: fixed;
-  top: .6em;
+  top: .4em;
   left: .6em;
   z-index: 9999;
   display: inline;
   cursor: pointer;
+}
+
+.fa-lightbulb {
+  position: relative;
+  left: 2px;
 }

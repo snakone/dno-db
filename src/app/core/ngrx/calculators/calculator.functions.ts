@@ -1,6 +1,6 @@
 import { Calculation } from "@shared/types/classes"
 import { BINARY_LIST, DNO_ITEM_RARITY, ENHANCEMENT_RESULT, UPGRADE_LEVELS } from "@shared/types/enums";
-import { CalculationProps, CalculationResult } from "@shared/types/interfaces";
+import { CalculationProps, CalculationResult, EnhancementTry } from "@shared/types/interfaces";
 
 export const switchGradeRate: Record<DNO_ITEM_RARITY, Partial<Record<UPGRADE_LEVELS, number>>> = {
   [DNO_ITEM_RARITY.NORMAL]: {4: 80, 5: 60, 6: 50, 7: 45, 8: 40, 9: 35, 10: 30, 11: 25, 12: 20, 13: 10, 14: 5, 15: 1},
@@ -20,22 +20,13 @@ export const switchBreakRate: Record<DNO_ITEM_RARITY, Partial<Record<UPGRADE_LEV
   [DNO_ITEM_RARITY.LEGEND]: {7: 33.33, 8: 33.33, 9: 33.33, 10: 33.33, 11: 33.33, 12: 33.33, 13: 33.33, 14: 33.33, 15: 79.99},
 }
 
-export const switchDecreaseRate: Record<DNO_ITEM_RARITY, Partial<Record<UPGRADE_LEVELS, number>>> = {
-  [DNO_ITEM_RARITY.NORMAL]: {7: 35, 8: 35, 9: 35, 10: 35, 11: 35, 12: 35, 13: 35, 14: 35, 15: 35},
-  [DNO_ITEM_RARITY.MAGIC]: {7: 35, 8: 35, 9: 35, 10: 35, 11: 35, 12: 35, 13: 35, 14: 35, 15: 35},
-  [DNO_ITEM_RARITY.RARE]: {7: 35, 8: 35, 9: 35, 10: 35, 11: 35, 12: 35, 13: 35, 14: 35, 15: 35},
-  [DNO_ITEM_RARITY.EPIC]: {7: 25, 8: 35, 9: 35, 10: 35, 11: 35, 12: 35, 13: 35, 14: 35, 15: 35},
-  [DNO_ITEM_RARITY.UNIQUE]: {7: 25, 8: 35, 9: 35, 10: 35, 11: 35, 12: 35, 13: 35, 14: 35, 15: 35},
-  [DNO_ITEM_RARITY.LEGEND]: {11: 33.33, 12: 33.33, 13: 33.33, 14: 33.33, 15: 79.99},
-}
-
 export const switchDowngradeRate: Record<DNO_ITEM_RARITY, Partial<Record<UPGRADE_LEVELS, number[]>>> = {
-  [DNO_ITEM_RARITY.NORMAL]: {7: [0, 1], 8: [0, 2], 9: [0, 2], 10: [1, 2], 11: [1, 2], 12: [1, 2], 13: [1, 2], 14: [1, 2], 15: [1, 2]},
-  [DNO_ITEM_RARITY.MAGIC]: {7: [0, 1], 8: [0, 2], 9: [0, 2], 10: [1, 2], 11: [1, 2], 12: [1, 2], 13: [1, 2], 14: [1, 2], 15: [1, 2]},
-  [DNO_ITEM_RARITY.RARE]: {7: [0, 1], 8: [0, 2], 9: [0, 2], 10: [1, 2], 11: [1, 2], 12: [1, 2], 13: [1, 2], 14: [1, 2], 15: [1, 2]},
-  [DNO_ITEM_RARITY.EPIC]: {7: [0, 1], 8: [0, 2], 9: [0, 2], 10: [1, 2], 11: [1, 2], 12: [1, 2], 13: [1, 2], 14: [1, 2], 15: [1, 2]},
-  [DNO_ITEM_RARITY.UNIQUE]: {7: [0, 1], 8: [0, 2], 9: [0, 2], 10: [1, 2], 11: [1, 2], 12: [1, 2], 13: [1, 2], 14: [1, 2], 15: [1, 2]},
-  [DNO_ITEM_RARITY.LEGEND]: {7: [0, 1], 8: [0, 2], 9: [0, 2], 10: [1, 2], 11: [1, 2], 12: [1, 2], 13: [1, 2], 14: [1, 2], 15: [1, 2]},
+  [DNO_ITEM_RARITY.NORMAL]: {7: [0, 1, 1], 8: [0, 1, 1, 2], 9: [0, 1, 1, 2], 10: [1, 2], 11: [1, 2], 12: [1, 2], 13: [1, 2], 14: [1, 2], 15: [1, 2]},
+  [DNO_ITEM_RARITY.MAGIC]: {7: [0, 1, 1], 8: [0, 1, 1, 2], 9: [0, 1, 1, 2], 10: [1, 2], 11: [1, 2], 12: [1, 2], 13: [1, 2], 14: [1, 2], 15: [1, 2]},
+  [DNO_ITEM_RARITY.RARE]: {7: [0, 1, 1], 8: [0, 1, 1, 2], 9: [0, 1, 1, 2], 10: [1, 2], 11: [1, 2], 12: [1, 2], 13: [1, 2], 14: [1, 2], 15: [1, 2]},
+  [DNO_ITEM_RARITY.EPIC]: {7: [0, 1, 1], 8: [0, 1, 1, 2], 9: [0, 1, 1, 2], 10: [1, 2], 11: [1, 2], 12: [1, 2], 13: [1, 2], 14: [1, 2], 15: [1, 2]},
+  [DNO_ITEM_RARITY.UNIQUE]: {7: [0, 1, 1], 8: [0, 1, 1, 2], 9: [0, 1, 1, 2], 10: [1, 2], 11: [1, 2], 12: [1, 2], 13: [1, 2], 14: [1, 2], 15: [1, 2]},
+  [DNO_ITEM_RARITY.LEGEND]: {7: [0, 1, 1], 8: [0, 1, 1, 2], 9: [0, 1, 1, 2], 10: [1, 2], 11: [1, 2], 12: [1, 2], 13: [1, 2], 14: [1, 2], 15: [1, 2]},
 }
 
 export function calculate(props: CalculationProps): CalculationResult {
@@ -43,68 +34,89 @@ export function calculate(props: CalculationProps): CalculationResult {
   let totalSuccess = 0;
   let totalBreaks = 0;
   let totalDecreases = 0;
+  let totalTries = 0;
   let currentLevel = props.from as UPGRADE_LEVELS;
   let nextLevel = props.from + 1 as UPGRADE_LEVELS;
-  const tries: any[] = [];
-  let enhancementResult: ENHANCEMENT_RESULT | undefined;
+  let enhancementResult: ENHANCEMENT_RESULT = ENHANCEMENT_RESULT.NONE;
+  let decreaseAmount = 0;
+  const tries: EnhancementTry[] = [];
+
+  function handleFailure() {
+    totalFails++;
+    decreaseAmount = 0;
+    enhancementResult = ENHANCEMENT_RESULT.FAIL;
+  }
 
   while (nextLevel <= props.to) {
-    const random = Math.ceil(Math.random() * 100);
-    let decreaseAmount = 0;
-    //BREAK
-    if(props.jellies === BINARY_LIST.NO) {
-      const breakRate = getRateFromBreak(nextLevel as UPGRADE_LEVELS, props.rarity);
-      if(breakRate !== 0) {
-        if(random < breakRate) {
-          totalBreaks++;
-          enhancementResult = ENHANCEMENT_RESULT.BREAK;
-          break;
-        }
-      }
-    }
-
+    totalTries++;
+    const random = Math.floor(Math.random() * 100);
+    decreaseAmount = 0;
+    currentLevel = nextLevel - 1;
     const rate = getRateFromGrade(nextLevel as UPGRADE_LEVELS, props.rarity);
-
-    if (random < rate) {
+    // SUCCESS
+    if (random <= rate) {
       nextLevel++;
       totalSuccess++;
       enhancementResult = ENHANCEMENT_RESULT.SUCCESS;
     } else {
-      const decreaseRate = getRateFromDecrease(nextLevel as UPGRADE_LEVELS, props.rarity);
-      const randomDecrease = Math.ceil(Math.random() * 100);
-
-      const decreaseArray = getRateFromDowngrade(nextLevel as UPGRADE_LEVELS, props.rarity);
-      decreaseAmount = getRandomNumberFromArray(decreaseArray);
-
-      if(randomDecrease <= decreaseRate && decreaseAmount !== 0) {
-        nextLevel = nextLevel - decreaseAmount;
-        totalDecreases++;
-        enhancementResult = ENHANCEMENT_RESULT.DECREASE;
+      //BREAK
+      const breakRate = getRateFromBreak(nextLevel as UPGRADE_LEVELS, props.rarity);
+      if(breakRate === 0) {
+        handleFailure();
       } else {
-        totalFails++;
-        decreaseAmount = 0;
-        enhancementResult = ENHANCEMENT_RESULT.FAIL;
+        const randomBreak = Math.floor(Math.random() * 100);
+        if(randomBreak <= breakRate) {
+          if(props.jellies === BINARY_LIST.NO) {
+            totalBreaks++;
+            tries.push({
+              from: currentLevel as UPGRADE_LEVELS,
+              to: currentLevel + 1 as UPGRADE_LEVELS,
+              result: ENHANCEMENT_RESULT.BREAK,
+              decrease: 0
+            });
+            break;
+          } else {
+            const decreaseArray = getRateFromDowngrade(nextLevel as UPGRADE_LEVELS, props.rarity);
+            decreaseAmount = selectFromUniformDistribution(decreaseArray);
+            // DECREASE
+            if(decreaseAmount !== 0) {
+              nextLevel -= decreaseAmount;
+              totalDecreases++;
+              enhancementResult = ENHANCEMENT_RESULT.DECREASE;
+            // FAILED
+            } else {
+              handleFailure();
+            }
+          }
+        } else {
+          handleFailure();
+        }
       }
     }
 
     tries.push({
-      from: currentLevel,
-      to: currentLevel + 1,
+      from: currentLevel as UPGRADE_LEVELS,
+      to: currentLevel + 1 as UPGRADE_LEVELS,
       result: enhancementResult,
-      decrease: decreaseAmount
+      decrease: decreaseAmount,
     });
 
-    enhancementResult = undefined;
+    enhancementResult = ENHANCEMENT_RESULT.NONE;
   }
-
-  console.log(tries)
 
   return {
     totalFails,
     totalSuccess,
     totalBreaks,
-    totalDecreases
+    totalDecreases,
+    totalTries,
+    tries
   } satisfies CalculationResult
+}
+
+function selectFromUniformDistribution<T>(array: T[]): T {
+  const index = Math.floor(Math.random() * array.length);
+  return array[index];
 }
 
 function getRateFromGrade(grade: UPGRADE_LEVELS, rarity: DNO_ITEM_RARITY): number {
@@ -115,15 +127,6 @@ function getRateFromBreak(grade: UPGRADE_LEVELS, rarity: DNO_ITEM_RARITY): numbe
   return switchBreakRate[rarity][grade] || 0;
 }
 
-function getRateFromDecrease(grade: UPGRADE_LEVELS, rarity: DNO_ITEM_RARITY): number {
-  return switchDecreaseRate[rarity][grade] || 0;
-}
-
 function getRateFromDowngrade(grade: UPGRADE_LEVELS, rarity: DNO_ITEM_RARITY): number[] {
   return switchDowngradeRate[rarity][grade] || [0];
-}
-
-function getRandomNumberFromArray(arr: number[]): number {
-  const randomIndex = Math.floor(Math.random() * arr.length);
-  return arr[randomIndex];
 }

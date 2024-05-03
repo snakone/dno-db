@@ -5,7 +5,8 @@ import {
   DNO_ITEM_SETS,
   UPGRADE_LEVELS,
   DNO_CLASSES,
-  BINARY_LIST
+  BINARY_LIST,
+  ENHANCEMENT_RESULT
 } from "./enums";
 
 export interface SimpleItem {
@@ -55,6 +56,8 @@ export interface CalculationResult {
   totalFails: number;
   totalBreaks: number;
   totalDecreases: number;
+  totalTries: number;
+  tries: EnhancementTry[]
 }
 
 export interface UpdateItem {
@@ -62,4 +65,11 @@ export interface UpdateItem {
   title: string;
   body: string;
   url: string;
+}
+
+export interface EnhancementTry {
+  from: UPGRADE_LEVELS;
+  to: UPGRADE_LEVELS;
+  result: ENHANCEMENT_RESULT;
+  decrease: number;
 }

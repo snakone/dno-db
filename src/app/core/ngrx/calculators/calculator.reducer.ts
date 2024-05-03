@@ -22,6 +22,8 @@ const featureReducer = createReducer(
   // CALCULATE
   on(CalculatorsActions.calculateSuccess, (state, {result}) => ({ ...state, result })),
   on(CalculatorsActions.calculateFailure, (state, {error}) => ({ ...state, error, loaded: false })),
+  // RESET
+  on(CalculatorsActions.reset, (state) => ({ ...state, result: null, calculation: new Calculation() })),
 );
 
 export function reducer(state: CalculationState | undefined, action: Action) {

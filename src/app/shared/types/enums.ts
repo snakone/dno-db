@@ -54,8 +54,25 @@ export enum DNO_ITEM_PIECE_TYPE {
   GLOVES = "Gloves",
   SHOES = "Shoes",
   WEAPON = "Primary Weapon",
+  WEAPON_MAG = "Primary Magic Weapon",
+  WEAPON_MAG_2 = "Primary Magic Weapon 2",
   SECONDARY = "Secondary Weapon",
-  NONE = "None"
+  NONE = "None",
+  LEGEND_WEAPON_1 = "Legend Weapon 1",
+  LEGEND_WEAPON_2 = "Legend Weapon 2",
+  LEGEND_WEAPON_3 = "Legend Weapon 3",
+  LEGEND_SECONDARY_1 = "Legend Secondary 1",
+  LEGEND_SECONDARY_2 = "Legend Secondary 2",
+  LEGEND_HELM_1 = "Legend Helm 1",
+  LEGEND_HELM_2 = "Legend Helm 2",
+  LEGEND_ARMOUR_1 = "Legend Armour 1",
+  LEGEND_ARMOUR_2 = "Legend Armour 2",
+  LEGEND_LEGS_1 = "Legend Legs 1",
+  LEGEND_LEGS_2 = "Legend Legs 2",
+  LEGEND_GLOVES_1 = "Legend Gloves 1",
+  LEGEND_GLOVES_2 = "Legend Gloves 2",
+  LEGEND_BOOTS_1 = "Legend Boots 1",
+  LEGEND_BOOTS_2 = "Legend Boots 2",
 }
 
 export enum BINARY_LIST {
@@ -68,5 +85,6 @@ export enum ENHANCEMENT_RESULT {
   SUCCESS = "Success",
   FAIL = "Fail",
   BREAK = "Break",
-  DECREASE = "Decrease"
+  DECREASE = "Decrease",
+  NONE = "None"
 }

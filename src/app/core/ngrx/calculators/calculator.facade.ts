@@ -19,4 +19,8 @@ export class CalculatorFacade {
     this.store.dispatch(CalculatorActions.calculate({calculation}));
   }
 
+  public reset(): void {
+    this.store.dispatch(CalculatorActions.reset());
+  }
+
 }

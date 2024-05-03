@@ -37,25 +37,32 @@ form {
       font-size: 1em;
     }
   }
+
+  & select {
+    & option {
+      color: rgb(58, 58, 58) !important;
+    }
+  }
 }
 
 .form-control {
   margin-bottom: 1.5em;
 
-  & input {
+  & input, select {
     transition: 100ms border ease-in-out;
+
+    &[disabled] {
+      opacity: .3;
+      pointer-events: none;
+    }
   }
 
   &:hover {
-    input, select {
+    input:not([disabled]), select:not([disabled]) {
       cursor: pointer;
       border-color: var(--active-color);
     }
   }
-}
-
-select {
-  background: url("../../../../../assets/images/arrow-down.png") no-repeat right;
 }
 
 button[disabled] {
@@ -71,5 +78,41 @@ footer {
     &.reset {
       filter: grayscale(1.5);
     }
+  }
+}
+
+hr {
+  margin: 2.5em 0;
+}
+
+.stats {
+  margin-bottom: 2em;
+}
+
+.try {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  margin-bottom: 1em;
+  padding: .6rem 2em;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  font-size: 1.4em;
+  width: 100%;
+  position: relative;
+
+  & .badge {
+    position: absolute;
+    right: 1em;
+    top: 12px;
+    opacity: .8;
+  }
+}
+
+.red {
+  color: red;
+}
+
+@media (max-width: 980px) {
+  .try {
+    font-size: initial;
   }
 }
