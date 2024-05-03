@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CalculationsService } from '@core/services/calculations.service';
 import { HttpService } from '@core/services/http/http.service';
+import { DNO_EnhancementItem } from '@shared/types/interfaces';
 
 @Component({
   selector: 'app-root',
@@ -11,15 +13,14 @@ import { HttpService } from '@core/services/http/http.service';
 export class AppComponent {
   title = 'dno-db';
 
-  constructor(private http: HttpService) {
-    // const arr: any = [];
-    // http.get('assets/Enhancements.json').subscribe((res: any) => {
-    //   Object.keys(res).filter((key: string) => key.includes("Flint")).forEach((key: string) => {
-    //     res[key].item = key;
-    //     arr.push(res[key])
-    //   })
-
-    //   console.log(arr)
-    // })
+  constructor(http: HttpService, calc: CalculationsService) {
+    const arr: DNO_EnhancementItem[] = [];
+    http.get('assets/Enhancements.json').subscribe((res: any) => {
+      Object.keys(res).forEach((key: string) => {
+        res[key].item = key;
+        arr.push(res[key])
+      })
+      calc.fullJSON = arr;
+    })
   }
 }

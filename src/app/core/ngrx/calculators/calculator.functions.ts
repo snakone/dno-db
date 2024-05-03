@@ -1,6 +1,6 @@
 import { Calculation } from "@shared/types/classes"
 import { BINARY_LIST, DNO_ITEM_RARITY, ENHANCEMENT_RESULT, UPGRADE_LEVELS } from "@shared/types/enums";
-import { CalculationProps, CalculationResult, EnhancementTry } from "@shared/types/interfaces";
+import { CalculationProps, CalculationResult, DNO_EnhancementItem, EnhancementTry } from "@shared/types/interfaces";
 
 export const switchGradeRate: Record<DNO_ITEM_RARITY, Partial<Record<UPGRADE_LEVELS, number>>> = {
   [DNO_ITEM_RARITY.NORMAL]: {4: 80, 5: 60, 6: 50, 7: 45, 8: 40, 9: 35, 10: 30, 11: 25, 12: 20, 13: 10, 14: 5, 15: 1},
@@ -26,10 +26,10 @@ export const switchDowngradeRate: Record<DNO_ITEM_RARITY, Partial<Record<UPGRADE
   [DNO_ITEM_RARITY.RARE]: {7: [0, 1, 1], 8: [0, 1, 1, 2], 9: [0, 1, 1, 2], 10: [1, 2], 11: [1, 2], 12: [1, 2], 13: [1, 2], 14: [1, 2], 15: [1, 2]},
   [DNO_ITEM_RARITY.EPIC]: {7: [0, 1, 1], 8: [0, 1, 1, 2], 9: [0, 1, 1, 2], 10: [1, 2], 11: [1, 2], 12: [1, 2], 13: [1, 2], 14: [1, 2], 15: [1, 2]},
   [DNO_ITEM_RARITY.UNIQUE]: {7: [0, 1, 1], 8: [0, 1, 1, 2], 9: [0, 1, 1, 2], 10: [1, 2], 11: [1, 2], 12: [1, 2], 13: [1, 2], 14: [1, 2], 15: [1, 2]},
-  [DNO_ITEM_RARITY.LEGEND]: {7: [0, 1, 1], 8: [0, 1, 1, 2], 9: [0, 1, 1, 2], 10: [1, 2], 11: [1, 2], 12: [1, 2], 13: [1, 2], 14: [1, 2], 15: [1, 2]},
+  [DNO_ITEM_RARITY.LEGEND]: {11: [1], 12: [1], 13: [1], 14: [1], 15: [1]},
 }
 
-export function calculate(props: CalculationProps): CalculationResult {
+export function calculate(props: CalculationProps, arr: DNO_EnhancementItem[]): CalculationResult {
   let totalFails = 0;
   let totalSuccess = 0;
   let totalBreaks = 0;

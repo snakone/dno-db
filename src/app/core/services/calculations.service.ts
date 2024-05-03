@@ -1,4 +1,5 @@
 import { Injectable, WritableSignal, signal } from '@angular/core';
+import { DNO_EnhancementItem } from '@shared/types/interfaces';
 
 import { Calculation } from '@typed/classes';
 import { UPGRADE_LEVELS } from '@typed/enums';
@@ -11,6 +12,7 @@ import { UPGRADE_LEVELS } from '@typed/enums';
 export class CalculationsService {
 
   public calculation: WritableSignal<Calculation> = signal(new Calculation());
+  public fullJSON: DNO_EnhancementItem[] = [];
 
   constructor() { }
 

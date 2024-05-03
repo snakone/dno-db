@@ -73,3 +73,49 @@ export interface EnhancementTry {
   result: ENHANCEMENT_RESULT;
   decrease: number;
 }
+
+export interface DNO_EnhancementItem {
+  BaseStats: DNO_EnhancementItemBaseStats;
+  Details: DNO_EnhancementItemDetails[];
+  Level: number;
+  Rarity: number;
+  item: string;
+}
+
+export interface DNO_EnhancementItemBaseStats {
+  ["Crit Resist"]?: number;
+  HP?: number;
+  INT?: number;
+  VIT?: number;
+  AGI?: number;
+  STR?: number;
+  MP?: number;
+  ["Magic Def"]?: number;
+  ["Para Resist"]?: number;
+  ["Phy Def"]?: number;
+  ["Stun Resist"]?: number;
+  ["Attk Power (Max)"]?: number;
+  ["Attk Power (Min)"]?: number;
+  ["Magic Attk (Max)"]?: number;
+  ["Magic Attk (Min)"]?: number;
+  Para?: number;
+  Stun?: number;
+  Critical?: number;
+}
+
+export interface DNO_EnhancementItemDetails {
+  breakRatio: number;
+  EnchangeLevel: number;
+  EnchantRatio: number;
+  Gold: number;
+  Materials?: DNO_EnhancementItemMaterials;
+  MaxDowngrade: number;
+  MinDowngrade: number;
+  Stats?: DNO_EnhancementItemBaseStats;
+}
+
+export interface DNO_EnhancementItemMaterials {
+  ["Essence of Life"]?: number;
+  ["Perfect Diamond"]?: number;
+  ["Ordinary Alteum"]?: number;
+}

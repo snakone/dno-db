@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { HEADER_ITEMS } from '@shared/app.data';
-import { SET_PIECES_BY_CLASS } from '@shared/data.dno';
 
 @Component({
   selector: 'app-header',
@@ -19,9 +18,7 @@ export class HeaderComponent {
   items = HEADER_ITEMS;
   mode: string | undefined;
 
-  constructor() {
-    console.log(SET_PIECES_BY_CLASS)
-  }
+  constructor() {}
 
   public openDrawer(): void {
     if (this.drawer) {
