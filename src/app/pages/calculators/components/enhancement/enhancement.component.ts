@@ -6,10 +6,8 @@ import { CalculatorFacade } from '@core/ngrx/calculators/calculator.facade';
 import { CalculationResult, SimpleItem } from '@shared/types/interfaces';
 
 import { 
-  BINARY_LIST,
   DNO_CLASSES,
   DNO_ITEM_PIECE_TYPE,
-  DNO_ITEM_RARITY,
   DNO_ITEM_SETS, 
   ENHANCEMENT_RESULT
 } from '@shared/types/enums';
@@ -40,16 +38,7 @@ export class EnhancementComponent {
 
   result$: Observable<CalculationResult | null> | undefined;
 
-  public calculation = new Calculation({
-    class: DNO_CLASSES.ARCHER,
-    from: 0,
-    to: 12,
-    rarity: DNO_ITEM_RARITY.EPIC,
-    jellies: BINARY_LIST.YES,
-    friendship: BINARY_LIST.YES,
-    piece: DNO_ITEM_PIECE_TYPE.WEAPON,
-    set: DNO_ITEM_SETS.FLINT,
-  });
+  public calculation = new Calculation();
 
   constructor(private calcFacade: CalculatorFacade) { }
 
@@ -71,12 +60,6 @@ export class EnhancementComponent {
                            .map(([key, value]) => ({ key, label: value })) as SimpleItem[];
 
     this.calculation.piece = DNO_ITEM_PIECE_TYPE.NONE;
-
-    if(set.includes("Legend")) {
-      this.calculation.rarity = DNO_ITEM_RARITY.LEGEND;
-    } else if(set.includes("Dragon")) {
-      this.calculation.rarity = DNO_ITEM_RARITY.UNIQUE;
-    }
   }
 
   public onClassChange(): void {

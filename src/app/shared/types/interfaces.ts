@@ -41,14 +41,15 @@ export interface PieceStatDNO {
 export interface CalculationProps {
   class: DNO_CLASSES;
   set: DNO_ITEM_SETS;
-  piece: DNO_ITEM_PIECE_TYPE | "Full";
+  piece: string;
   from: number;
   to: number;
-  hp?: number;
-  mp?: number;
   jellies: BINARY_LIST;
   friendship: BINARY_LIST;
-  rarity: DNO_ITEM_RARITY;
+  hp?: number;
+  mp?: number;
+  att?: number;
+  mag?: number;
 }
 
 export interface CalculationResult {
@@ -57,7 +58,8 @@ export interface CalculationResult {
   totalBreaks: number;
   totalDecreases: number;
   totalTries: number;
-  tries: EnhancementTry[]
+  tries: EnhancementTry[];
+  totalMaterials?: DNO_EnhancementItemMaterials;
 }
 
 export interface UpdateItem {
@@ -72,6 +74,8 @@ export interface EnhancementTry {
   to: UPGRADE_LEVELS;
   result: ENHANCEMENT_RESULT;
   decrease: number;
+  materials?: DNO_EnhancementItemMaterials;
+  stats?: DNO_EnhancementItemBaseStats;
 }
 
 export interface DNO_EnhancementItem {
@@ -83,29 +87,29 @@ export interface DNO_EnhancementItem {
 }
 
 export interface DNO_EnhancementItemBaseStats {
-  ["Crit Resist"]?: number;
   HP?: number;
   INT?: number;
   VIT?: number;
   AGI?: number;
   STR?: number;
   MP?: number;
+  Critical?: number;
   ["Magic Def"]?: number;
-  ["Para Resist"]?: number;
   ["Phy Def"]?: number;
+  ["Para Resist"]?: number;
   ["Stun Resist"]?: number;
+  ["Crit Resist"]?: number;
   ["Attk Power (Max)"]?: number;
   ["Attk Power (Min)"]?: number;
   ["Magic Attk (Max)"]?: number;
   ["Magic Attk (Min)"]?: number;
   Para?: number;
   Stun?: number;
-  Critical?: number;
 }
 
 export interface DNO_EnhancementItemDetails {
-  breakRatio: number;
-  EnchangeLevel: number;
+  BreakRatio: number;
+  EnchantLevel: number;
   EnchantRatio: number;
   Gold: number;
   Materials?: DNO_EnhancementItemMaterials;
@@ -115,9 +119,19 @@ export interface DNO_EnhancementItemDetails {
 }
 
 export interface DNO_EnhancementItemMaterials {
-  ["Essence of Life"]?: number;
-  ["Perfect Diamond"]?: number;
+  ["Rough Alteum"]?: number;
+  ["Rough Diamond"]?: number;
   ["Ordinary Alteum"]?: number;
+  ["Ordinary Diamond"]?: number;
+  ["Polished Alteum"]?: number;
+  ["Polished Diamond"]?: number;
+  ["Flawless Alteum"]?: number;
+  ["Flawless Diamond"]?: number;
+  ["Perfect Diamond"]?: number;
+  ["Perfect Alteum"]?: number;
+  ["Essence of Life"]?: number;
+  ["Item Protection Jellies"]?: number;
+  Gold?: number;
 }
 
 // SERVER RESPONSES
