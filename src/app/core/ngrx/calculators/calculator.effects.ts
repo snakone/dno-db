@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 import * as CalculatorActions from './calculator.actions';
-import { map, concatMap, catchError, filter, tap } from 'rxjs/operators';
+import { map, concatMap, catchError, filter, debounceTime } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { CalculationState } from './calculator.reducer';
 import { calculate } from './calculator.functions';
@@ -18,12 +18,12 @@ export class CalculatorEffects {
     private itemSrv: ItemsService
   ) { }
 
-   // CALCULATE BY PIECE NAME
+  // CALCULATE BY PIECE NAME
   calculateByPieceNameEffect$ = createEffect(() => this.actions
     .pipe(
       ofType(CalculatorActions.calculate),
       filter(action => Boolean(action.calculation)),
-      tap(res => console.log('start call backend')),
+      debounceTime(1500),
       concatMap(({calculation}) =>
       this.itemSrv.getItemByName(calculation.piece)
         .pipe(

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 import { Calculation } from '@shared/types/classes';
 import { CalculatorFacade } from '@core/ngrx/calculators/calculator.facade';
@@ -35,9 +35,10 @@ export class EnhancementComponent {
   pieceList = DNO_ITEM_PIECE_LIST;
   jellyList = DNO_BINARY_LIST;
   friendList = DNO_BINARY_LIST;
-  prayList = DNO_BINARY_LIST;
+  springList = [{key: 10, label: 'Stage 1: 10%'}, {key: 20, label: 'Stage 2: 20%'}, {key: 30, label: 'Stage 3: 30%'}];
 
   result$: Observable<CalculationResult | null> | undefined;
+  loading$: Observable<boolean> | undefined;
 
   public calculation = new Calculation();
 
@@ -45,6 +46,7 @@ export class EnhancementComponent {
 
   ngOnInit() {
     this.result$ = this.calcFacade.result$;
+    this.loading$ = this.calcFacade.loading$;
   }
 
   public calculate(): void {

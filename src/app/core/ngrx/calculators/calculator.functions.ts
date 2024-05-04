@@ -1,8 +1,7 @@
 import { BINARY_LIST, ENHANCEMENT_RESULT, UPGRADE_LEVELS } from "@shared/types/enums";
-import { CalculationProps, CalculationResult, DNO_EnhancementItem, DNO_EnhancementItemMaterials, EnhancementTry } from "@shared/types/interfaces";
+import { CalculationProps, CalculationResult, DNO_EnhancementItem, DNO_EnhancementItemDetails, DNO_EnhancementItemMaterials, EnhancementTry } from "@shared/types/interfaces";
 
 export function calculate(props: CalculationProps, item: DNO_EnhancementItem): CalculationResult {
-  console.log('calculating')
   let totalFails = 0;
   let totalSuccess = 0;
   let totalBreaks = 0;
@@ -24,13 +23,15 @@ export function calculate(props: CalculationProps, item: DNO_EnhancementItem): C
   while (nextLevel <= props.to) {
     const details = item.Details.find(detail => detail.EnchantLevel === nextLevel);
     if(details) {
+      const materialsWithGold = {...details?.Materials, Gold: getDiscountGold(details?.Gold, props.friendship)};
       totalTries++;
-      addMaterials(totalMaterials, {...details.Materials, Gold: getDiscountGold(details.Gold, props.friendship)});
+      addMaterials(totalMaterials, materialsWithGold);
       const random = Math.floor(Math.random() * 100);
+      const ratio = getSpringBonus(props, details);
       decreaseAmount = 0;
       currentLevel = nextLevel - 1;
       // SUCCESS
-      if (random <= details?.EnchantRatio) {
+      if (random <= ratio) {
         nextLevel++;
         totalSuccess++;
         enhancementResult = ENHANCEMENT_RESULT.SUCCESS;
@@ -42,15 +43,15 @@ export function calculate(props: CalculationProps, item: DNO_EnhancementItem): C
         } else {
           const randomBreak = Math.floor(Math.random() * 100);
           if(randomBreak <= breakRate) {
-            if(props.jellies !== BINARY_LIST.YES) {
+            if(props.jellies !== BINARY_LIST.YES || nextLevel >= 14) {
               totalBreaks++;
               tries.push({
                 from: currentLevel as UPGRADE_LEVELS,
                 to: currentLevel + 1 as UPGRADE_LEVELS,
                 result: ENHANCEMENT_RESULT.BREAK,
                 decrease: 0,
-                materials: {...details?.Materials, Gold: getDiscountGold(details?.Gold, props.friendship)},
-                rate: details?.EnchantRatio
+                materials: materialsWithGold,
+                rate: ratio
               });
               break;
             } else {
@@ -71,19 +72,19 @@ export function calculate(props: CalculationProps, item: DNO_EnhancementItem): C
           }
         }
       }
-    }
-    
-    tries.push({
-      from: currentLevel as UPGRADE_LEVELS,
-      to: currentLevel + 1 as UPGRADE_LEVELS,
-      result: enhancementResult,
-      decrease: decreaseAmount,
-      materials: {...details?.Materials, Gold: getDiscountGold(details?.Gold, props.friendship)},
-      rate: details?.EnchantRatio,
-      stats: details?.Stats
-    });
 
-    enhancementResult = ENHANCEMENT_RESULT.NONE;
+      tries.push({
+        from: currentLevel as UPGRADE_LEVELS,
+        to: currentLevel + 1 as UPGRADE_LEVELS,
+        result: enhancementResult,
+        decrease: decreaseAmount,
+        materials: materialsWithGold,
+        rate: ratio,
+        stats: details?.Stats
+      });
+  
+      enhancementResult = ENHANCEMENT_RESULT.NONE;
+    }
   }
 
   return {
@@ -94,7 +95,7 @@ export function calculate(props: CalculationProps, item: DNO_EnhancementItem): C
     totalTries,
     totalMaterials,
     tries
-  } satisfies CalculationResult
+  } satisfies CalculationResult;
 }
 
 function selectFromUniformDistribution<T>(array: T[]): T {
@@ -133,4 +134,10 @@ function createRange(min: number, max: number): number[] {
       result.push(i);
   }
   return result;
+}
+
+function getSpringBonus(props: CalculationProps, details: DNO_EnhancementItemDetails): number {
+  if(props.spring === 1) {return details.EnchantRatio; }
+  const addition = (details.EnchantRatio / 100) * props.spring;
+  return Number(Math.min(details.EnchantRatio + addition, 100).toFixed(1));
 }

@@ -11,7 +11,7 @@ import { Calculation } from '@shared/types/classes';
 export class CalculatorFacade {
 
   public result$ = this.store.select(fromCalculator.getResult);
-  public loaded$ = this.store.select(fromCalculator.getLoaded);
+  public loading$ = this.store.select(fromCalculator.getLoaded);
 
   constructor(private store: Store<CalculationState>) { }
 

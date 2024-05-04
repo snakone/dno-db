@@ -1,3 +1,9 @@
+@if((loading$ | async); as loading) {
+<div class="backdrop">
+  <span class="loader"></span>
+</div>
+}
+
 @if (calculation) {
 <section id="main">
   <div class="container">
@@ -8,7 +14,7 @@
         <h2>DNO Calculators - Enhancement</h2>
         <p>In memory of Blacksmith Merlin</p>
       </header>
-      <p>
+      <p style="margin-bottom: 3em;">
         Enhancement is a vital part of the game system within Dragon Nest which allows one to greatly improve the
         quality of their equipment. Weapons can be enhanced to increase their magical and physical damage stat
         contribution. Armour can be enhanced to increase its health and mana stat contribution. As enhancement level
@@ -107,11 +113,11 @@
           </div>
           <div class="col-4 col-12-small">
             <div class="form-control">
-              <label for="pray">Pray to Merlin?</label>
-              <select name="pray" title="pray">
-                <option value="false" disabled selected>Please?</option>
-                @for(prayName of prayList; track prayName) {
-                <option [value]="prayName.label">{{prayName.label}}</option>
+              <label for="spring">Hot Spring Bonus?</label>
+              <select name="spring" title="spring" [(ngModel)]="calculation.spring">
+                <option value="1" disabled selected>Relaxed?</option>
+                @for(springName of springList; track springName) {
+                <option [value]="springName.key">{{springName.label}}</option>
                 }
               </select>
             </div>
@@ -145,13 +151,14 @@
       <footer>
         <button class="button reset" (click)="reset()">Reset</button>
         <button class="button" [disabled]="!calculation.class || 
-                                            !calculation.set || 
-                                            !calculation.piece || 
-                                            calculation.from == undefined ||
-                                            !calculation.to ||
-                                            calculation.from >= calculation.to" (click)="calculate();">Calculate!
+                                              !calculation.set || 
+                                              !calculation.piece || 
+                                              calculation.from == undefined ||
+                                              !calculation.to ||
+                                              calculation.from >= calculation.to" (click)="calculate();">Calculate!
         </button>
-        <p class="claim">We are using a free server to store the item data. It can take a while if the server is slept. Be patient please.</p>
+        <p class="claim">We are using a free server to store the item data. It can take a while if the server is slept.
+          Be patient please.</p>
       </footer>
 
       @if(result$ | async; as result) {
@@ -162,11 +169,16 @@
           accurate and that each attempt is calculated <strong>randomly</strong>. This means that you can go from 0 to
           +12 without
           failing once, and at the same time fail an attempt 50 times in a row. There is no pattern.
-        </p>
-        <p>
-          Please take this for <strong>reference</strong> only. 
+          Please take this for <strong>reference</strong> only.
           Gold cost only, this means if an enhacement cost Silver but Gold, will show as 0.
           Some materials might be wrong.
+        </p>
+        <p>
+          <strong>{{calculation.piece}}</strong> from <strong>{{calculation.from}}</strong> to
+          <strong>{{calculation.to}}</strong>
+        </p>
+        <p>
+
         </p>
         <div class="stats">
           <div class="success">
@@ -200,9 +212,9 @@
             <div>from <strong>{{try.from}}</strong></div>
             <div>to <strong>{{try.to}}</strong></div>
             @if(try.rate) {
-              <div style="margin: auto;">Rate: 
-                <strong [ngStyle]="{'color': getRatioColor(try.rate), 'font-weight': 'bold'}">{{try.rate}}%</strong>
-              </div>
+            <div style="margin: auto;">Rate:
+              <strong [ngStyle]="{'color': getRatioColor(try.rate), 'font-weight': 'bold'}">{{try.rate}}%</strong>
+            </div>
             }
           </div>
           <div style="margin-left: 1em;">
@@ -213,10 +225,9 @@
           </div>
           <div class="try-materials">
             @for(stat of getTryMaterials(try); track $index) {
-              <div><img class="material-image" 
-                        [src]="'assets/images/materials/' + stat.key + '.png'" /> X {{stat.value}}
-              </div>
-              }
+            <div><img class="material-image" [src]="'assets/images/materials/' + stat.key + '.png'" /> X {{stat.value}}
+            </div>
+            }
           </div>
           <div class="badge" [class]="try.result.toLowerCase()" [innerHTML]="getBadgeResult(try.result)">
           </div>

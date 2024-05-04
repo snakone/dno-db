@@ -7,21 +7,22 @@ export interface CalculationState {
   result: CalculationResult | null;
   calculation: Calculation;
   error: string | null;
-  loaded: boolean;
+  loading: boolean;
 }
 
 export const inititalState: CalculationState = {
   result: null,
   calculation: new Calculation(),
   error: null,
-  loaded: false,
+  loading: false,
 };
 
 const featureReducer = createReducer(
   inititalState,
   // CALCULATE
-  on(CalculatorsActions.calculateSuccess, (state, {result}) => ({ ...state, result })),
-  on(CalculatorsActions.calculateFailure, (state, {error}) => ({ ...state, error, loaded: false })),
+  on(CalculatorsActions.calculate, (state) => ({ ...state, loading: true })),
+  on(CalculatorsActions.calculateSuccess, (state, {result}) => ({ ...state, result, loading: false })),
+  on(CalculatorsActions.calculateFailure, (state, {error}) => ({ ...state, error, loading: false })),
   // RESET
   on(CalculatorsActions.reset, (state) => ({ ...state, result: null, calculation: new Calculation() })),
 );
@@ -31,4 +32,4 @@ export function reducer(state: CalculationState | undefined, action: Action) {
 }
 
 export const getResult = (state: CalculationState) => state.result;
-export const getLoaded = (state: CalculationState) => state.loaded;
+export const getLoaded = (state: CalculationState) => state.loading;

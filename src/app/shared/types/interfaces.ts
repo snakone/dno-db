@@ -11,7 +11,7 @@ import {
 
 export interface SimpleItem {
   key: string;
-  label: string;
+  label: string | number;
 }
 
 export interface DropDownMenuItem extends SimpleItem { }
@@ -46,6 +46,7 @@ export interface CalculationProps {
   to: number;
   jellies: BINARY_LIST;
   friendship: BINARY_LIST;
+  spring: 1 | 10 | 20 | 30;
   hp?: number;
   mp?: number;
   att?: number;

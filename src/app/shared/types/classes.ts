@@ -9,6 +9,7 @@ export class Calculation {
   to: number = null!;
   jellies: BINARY_LIST = BINARY_LIST.NONE;
   friendship: BINARY_LIST = BINARY_LIST.NONE;
+  spring: 1 | 10 | 20 | 30 = 1;
   hp: number = null!;
   mp: number = null!;
   att?: number = null!;

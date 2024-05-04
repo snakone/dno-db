@@ -112,8 +112,8 @@ export const SWITCH_LEGEND_SETS_PIECE_BY_CLASS: any = {
   [DNO_CLASSES.ACADEMIC]: {
     [DNO_ITEM_PIECE_TYPE.LEGEND_WEAPON_1]: "Coordinator Cannon",
     [DNO_ITEM_PIECE_TYPE.LEGEND_WEAPON_2]: "Changer Bubble Gun",
-    [DNO_ITEM_PIECE_TYPE.LEGEND_SECONDARY_1]: "Coordinator Mecha Gloves",
-    [DNO_ITEM_PIECE_TYPE.LEGEND_SECONDARY_2]: "Changer Mecha Gloves",
+    [DNO_ITEM_PIECE_TYPE.LEGEND_SECONDARY_1]: "Coordinator Mecha Glove",
+    [DNO_ITEM_PIECE_TYPE.LEGEND_SECONDARY_2]: "Changer Mecha Glove",
     [DNO_ITEM_PIECE_TYPE.LEGEND_HELM_1]: "Coordinator Beret",
     [DNO_ITEM_PIECE_TYPE.LEGEND_HELM_2]: "Changer Beret",
     [DNO_ITEM_PIECE_TYPE.LEGEND_ARMOUR_1]: "Coordinator Tunic",
