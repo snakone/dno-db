@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  api: 'http://localhost:3000/',
+  api: 'https://dno-db-backend-js.onrender.com/',
   url: 'https://dnodb.netlify.app/'
 };
 

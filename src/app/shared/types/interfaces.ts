@@ -76,6 +76,7 @@ export interface EnhancementTry {
   decrease: number;
   materials?: DNO_EnhancementItemMaterials;
   stats?: DNO_EnhancementItemBaseStats;
+  rate?: number;
 }
 
 export interface DNO_EnhancementItem {

@@ -2,6 +2,7 @@ import { BINARY_LIST, ENHANCEMENT_RESULT, UPGRADE_LEVELS } from "@shared/types/e
 import { CalculationProps, CalculationResult, DNO_EnhancementItem, DNO_EnhancementItemMaterials, EnhancementTry } from "@shared/types/interfaces";
 
 export function calculate(props: CalculationProps, item: DNO_EnhancementItem): CalculationResult {
+  console.log('calculating')
   let totalFails = 0;
   let totalSuccess = 0;
   let totalBreaks = 0;
@@ -41,13 +42,15 @@ export function calculate(props: CalculationProps, item: DNO_EnhancementItem): C
         } else {
           const randomBreak = Math.floor(Math.random() * 100);
           if(randomBreak <= breakRate) {
-            if(props.jellies === BINARY_LIST.NO) {
+            if(props.jellies !== BINARY_LIST.YES) {
               totalBreaks++;
               tries.push({
                 from: currentLevel as UPGRADE_LEVELS,
                 to: currentLevel + 1 as UPGRADE_LEVELS,
                 result: ENHANCEMENT_RESULT.BREAK,
-                decrease: 0
+                decrease: 0,
+                materials: {...details?.Materials, Gold: getDiscountGold(details?.Gold, props.friendship)},
+                rate: details?.EnchantRatio
               });
               break;
             } else {
@@ -76,6 +79,7 @@ export function calculate(props: CalculationProps, item: DNO_EnhancementItem): C
       result: enhancementResult,
       decrease: decreaseAmount,
       materials: {...details?.Materials, Gold: getDiscountGold(details?.Gold, props.friendship)},
+      rate: details?.EnchantRatio,
       stats: details?.Stats
     });
 

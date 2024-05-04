@@ -3,9 +3,10 @@ import { Observable } from 'rxjs';
 
 import { Calculation } from '@shared/types/classes';
 import { CalculatorFacade } from '@core/ngrx/calculators/calculator.facade';
-import { CalculationResult, SimpleItem } from '@shared/types/interfaces';
+import { CalculationResult, EnhancementTry, SimpleItem } from '@shared/types/interfaces';
 
 import { 
+  BINARY_LIST,
   DNO_CLASSES,
   DNO_ITEM_PIECE_TYPE,
   DNO_ITEM_SETS, 
@@ -87,6 +88,31 @@ export class EnhancementComponent {
     }
 
     return undefined;
+  }
+
+  public getTotalMaterials(result: CalculationResult): {key: string, value: number}[] {
+    if(!result.totalMaterials) { return []; }
+    const materials = Object.entries(result.totalMaterials)
+                            .filter(([key, _]) => key !== 'Gold')
+                            .map(([key, value]) => ({key, value}));
+ 
+    return this.calculation.jellies !== BINARY_LIST.YES ? materials.filter(mat => mat.key !== 'Item Protection Jellies') : materials;
+  }
+
+  public getTryMaterials(enhanTry: EnhancementTry): {key: string, value: number}[] {
+    if(!enhanTry.materials) { return []; }
+    const materials = Object.entries(enhanTry.materials)
+                            .map(([key, value]) => ({key, value}));
+ 
+    return this.calculation.jellies !== BINARY_LIST.YES ? materials.filter(mat => mat.key !== 'Item Protection Jellies') : materials;
+  }
+
+  public getRatioColor(ratio: number = 0): string {
+    if(ratio <= 15) { return 'crimson'; }
+    else if(ratio > 15 && ratio <= 35) { return 'chocolate'; }
+    else if(ratio > 25 && ratio <= 65) { return 'darkcyan' }
+    else if(ratio > 65 && ratio < 100) { return 'darkslategray' }
+    return 'chartreuse';
   }
 
 }

@@ -6,7 +6,7 @@ export const SWITCH_SETS: any = {
   [DNO_ITEM_SETS.MANTICORE]: "Manticore",
   [DNO_ITEM_SETS.APOCALYPSE]: "Apocalypse",
   [DNO_ITEM_SETS.ARCHBISHOP]: "Ancient Totem",
-  [DNO_ITEM_SETS.GIGANTES]: "Inmortal",
+  [DNO_ITEM_SETS.GIGANTES]: "Immortal",
   [DNO_ITEM_SETS.DANGEROUS]: "Dangerous desire's",
   [DNO_ITEM_SETS.TWISTED]: "Twisted obsession",
   [DNO_ITEM_SETS.HONOURABLE]: "Honourable tribe's",
@@ -27,7 +27,7 @@ export const SWITCH_SETS_PIECE_BY_CLASS: any = {
   [DNO_CLASSES.ACADEMIC]: {
     [DNO_ITEM_PIECE_TYPE.WEAPON]: "Cannon",
     [DNO_ITEM_PIECE_TYPE.WEAPON_MAG]: "Bubble Gun",
-    [DNO_ITEM_PIECE_TYPE.SECONDARY]: "Mecha Gloves",
+    [DNO_ITEM_PIECE_TYPE.SECONDARY]: "Mecha Glove",
     [DNO_ITEM_PIECE_TYPE.HELM]: "Beret",
     [DNO_ITEM_PIECE_TYPE.ARMOUR]: "Tunic",
     [DNO_ITEM_PIECE_TYPE.LEGS]: "Slacks",

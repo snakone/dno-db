@@ -90,11 +90,12 @@ hr {
 }
 
 .try {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, 
+              rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   margin-bottom: 1em;
   padding: .6rem 2em;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 1fr 36%;
   font-size: 1.4em;
   width: 100%;
   position: relative;
@@ -103,7 +104,7 @@ hr {
     position: absolute;
     right: 1em;
     top: 12px;
-    opacity: .8;
+    opacity: .7;
   }
 }
 
@@ -117,8 +118,26 @@ hr {
   }
 }
 
-img.gold {
+img.material-image {
   position: relative;
   margin-right: 5px;
-  top: 2.5px;
+  top: 3.5px;
+  left: -1.5px;
+}
+
+.range {
+  display: flex;
+  gap: 1em;
+  color: darkslategray
+}
+
+.try-materials {
+  display: flex;
+  gap: 1em;
+  font-size: initial;
+}
+
+.claim {
+  margin-top: 2em;
+  margin-bottom: 0;
 }

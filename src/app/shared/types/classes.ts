@@ -4,7 +4,7 @@ import { CalculationProps } from "./interfaces";
 export class Calculation {
   class: DNO_CLASSES = DNO_CLASSES.NONE;
   set: DNO_ITEM_SETS = DNO_ITEM_SETS.NONE;
-  piece!: string;
+  piece: string = "None";
   from: number = null!;
   to: number = null!;
   jellies: BINARY_LIST = BINARY_LIST.NONE;
