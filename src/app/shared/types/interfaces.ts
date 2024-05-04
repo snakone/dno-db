@@ -119,3 +119,14 @@ export interface DNO_EnhancementItemMaterials {
   ["Perfect Diamond"]?: number;
   ["Ordinary Alteum"]?: number;
 }
+
+// SERVER RESPONSES
+interface ServerResponse {
+  ok: boolean;
+  message?: string;
+  err?: any;
+}
+
+export interface DNOItemResponse extends ServerResponse {
+  item: DNO_EnhancementItem;
+}
