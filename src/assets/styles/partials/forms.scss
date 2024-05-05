@@ -76,14 +76,14 @@ table tr:first-child {
 }
 
 table td {
-  padding: 0.5em 1em 0.5em 1em;
+  padding: 0.5em 1em 0.5em 1em !important;
 }
 
 table th {
   text-align: left;
   padding: 0.5em 1em 0.5em 1em;
-  font-weight: 700;
   margin: 0 0 1em 0;
+  font-weight: bold !important;
 }
 
 table thead {
@@ -209,5 +209,25 @@ button.large,
     color: rgb(12, 182, 212);
     position: relative;
     left: 1px;
+  }
+}
+
+.form-control {
+  margin-bottom: 1.5em;
+
+  & input, select {
+    transition: 100ms border ease-in-out;
+
+    &[disabled] {
+      opacity: .3;
+      pointer-events: none;
+    }
+  }
+
+  &:hover {
+    input:not([disabled]), select:not([disabled]) {
+      cursor: pointer;
+      border-color: var(--active-color);
+    }
   }
 }

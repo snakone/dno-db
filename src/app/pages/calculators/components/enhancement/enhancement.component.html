@@ -1,7 +1,7 @@
 @if((loading$ | async); as loading) {
-<div class="backdrop">
-  <span class="loader"></span>
-</div>
+  <div class="backdrop">
+    <span class="loader"></span>
+  </div>
 }
 
 @if (calculation) {
@@ -28,6 +28,7 @@
           <i class="fas fa-check"></i>
           }
         </h3>
+        <!-- CLASS -->
         <div class="row">
           <div class="col-4 col-12-small">
             <div class="form-control">
@@ -41,6 +42,7 @@
               </select>
             </div>
           </div>
+        <!-- SET -->
           <div class="col-4 col-12-small">
             <div class="form-control">
               <label for="set">Choose a Set:</label>
@@ -53,6 +55,7 @@
               </select>
             </div>
           </div>
+          <!-- PIECE -->
           <div class="col-4 col-12-small">
             <div class="form-control">
               <label for="set">Choose a Piece:</label>
@@ -71,6 +74,7 @@
             }
         </h3>
         <div class="row">
+          <!-- FROM -->
           <div class="col-6">
             <div class="form-control">
               <label for="min">From Grade:</label>
@@ -78,6 +82,7 @@
                 oninput="this.value = this.value > 14 ? 14 : Math.abs(this.value)" />
             </div>
           </div>
+          <!-- TO -->
           <div class="col-6">
             <div class="form-control">
               <label for="max">To Grade:</label>
@@ -89,6 +94,7 @@
         </div>
         <h3>Bonus <span>(Optional)</span></h3>
         <div class="row">
+          <!-- ALLIANCE -->
           <div class="col-4 col-12-small">
             <div class="form-control">
               <label for="friendship">Alliance Friendship Bonus?</label>
@@ -100,6 +106,7 @@
               </select>
             </div>
           </div>
+          <!-- JELLIES -->
           <div class="col-4 col-12-small">
             <div class="form-control">
               <label for="jellies">Protection Jellies?</label>
@@ -111,6 +118,7 @@
               </select>
             </div>
           </div>
+          <!-- SPRING -->
           <div class="col-4 col-12-small">
             <div class="form-control">
               <label for="spring">Hot Spring Bonus?</label>
@@ -148,6 +156,7 @@
 
         </div>
       </form>
+      <!-- BUTTONS -->
       <footer>
         <button class="button reset" (click)="reset()">Reset</button>
         <button class="button" [disabled]="!calculation.class || 
@@ -177,9 +186,7 @@
           <strong>{{calculation.piece}}</strong> from <strong>{{calculation.from}}</strong> to
           <strong>{{calculation.to}}</strong>
         </p>
-        <p>
-
-        </p>
+        <!-- STATS -->
         <div class="stats">
           <div class="success">
             <i class="fas fa-check"></i> Success: {{result.totalSuccess}}
@@ -196,6 +203,7 @@
           <div class="total">
             <i class="far fa-chart-bar"></i> Total: {{result.totalTries}}
           </div>
+          <!-- MATERIALS -->
           <div class="gold">
             <img class="material-image" alt="Gold Icon" src="assets/images/materials/Gold.png" /> Gold:
             {{result.totalMaterials?.Gold || 0}}
@@ -206,6 +214,7 @@
           </div>
           }
         </div>
+        <!-- ROW -->
         @for (try of result.tries; track $index) {
         <div class="try">
           <div class="range">

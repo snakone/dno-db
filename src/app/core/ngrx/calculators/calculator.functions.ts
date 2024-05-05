@@ -137,7 +137,7 @@ function createRange(min: number, max: number): number[] {
 }
 
 function getSpringBonus(props: CalculationProps, details: DNO_EnhancementItemDetails): number {
-  if(props.spring === 1) {return details.EnchantRatio; }
+  if(Number(props.spring) === 1) {return details.EnchantRatio; }
   const addition = (details.EnchantRatio / 100) * props.spring;
   return Number(Math.min(details.EnchantRatio + addition, 100).toFixed(1));
 }

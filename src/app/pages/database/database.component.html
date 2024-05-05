@@ -1,37 +1,13 @@
+@if(isLoadingResults) {
+  <div class="backdrop">
+    <span class="loader"></span>
+  </div>
+}
+
 <section id="main">
   <div class="container">
     <div class="row">
-      <div class="col-4 col-12-medium">
-        <!-- Sidebar -->
-        <section class="box">
-          <a href="#" class="image featured"><img src="assets/images/pic09.jpg" alt=""></a>
-          <header>
-            <h3>Sed etiam lorem nulla</h3>
-          </header>
-          <p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit adipiscing et
-            feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-          <footer>
-            <a href="#" class="button alt">Magna sed taciti</a>
-          </footer>
-        </section>
-        <section class="box">
-          <header>
-            <h3>Feugiat consequat</h3>
-          </header>
-          <p>Veroeros sed amet blandit consequat veroeros lorem blandit adipiscing et feugiat sed lorem consequat
-            feugiat lorem dolore.</p>
-          <ul class="divided">
-            <li><a href="#">Sed et blandit consequat sed</a></li>
-            <li><a href="#">Hendrerit tortor vitae sapien dolore</a></li>
-            <li><a href="#">Sapien id suscipit magna sed felis</a></li>
-            <li><a href="#">Aptent taciti sociosqu ad litora</a></li>
-          </ul>
-          <footer>
-            <a href="#" class="button alt">Ipsum consequat</a>
-          </footer>
-        </section>
-      </div>
-      <div class="col-8 col-12-medium imp-medium">
+      <div class="col-12">
         <!-- Content -->
         <article class="box post">
           <a href="#" class="image featured"><img src="assets/images/pic01.jpg" alt=""></a>
@@ -39,58 +15,66 @@
             <h2>Left Sidebar</h2>
             <p>Lorem ipsum dolor sit amet feugiat</p>
           </header>
-          <p>
-            Vestibulum scelerisque ultricies libero id hendrerit. Vivamus malesuada quam faucibus ante dignissim auctor
-            hendrerit libero placerat. Nulla facilisi. Proin aliquam felis non arcu molestie at accumsan turpis commodo.
-            Proin elementum, nibh non egestas sodales, augue quam aliquet est, id egestas diam justo adipiscing ante.
-            Pellentesque tempus nulla non urna eleifend ut ultrices nisi faucibus.
-          </p>
-          <p>
-            Praesent a dolor leo. Duis in felis in tortor lobortis volutpat et pretium tellus. Vestibulum ac ante nisl,
-            a elementum odio. Duis semper risus et lectus commodo fringilla. Maecenas sagittis convallis justo vel
-            mattis.
-            placerat, nunc diam iaculis massa, et aliquet nibh leo non nisl vitae porta lobortis, enim neque fringilla
-            nunc,
-            eget faucibus lacus sem quis nunc suspendisse nec lectus sit amet augue rutrum vulputate ut ut mi. Aenean
-            elementum, mi sit amet porttitor lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor
-            sit amet nullam consequat feugiat dolore tempus.
-          </p>
-          <section>
-            <header>
-              <h3>Something else</h3>
-            </header>
-            <p>
-              Elementum odio duis semper risus et lectus commodo fringilla. Maecenas sagittis convallis justo vel
-              mattis.
-              placerat, nunc diam iaculis massa, et aliquet nibh leo non nisl vitae porta lobortis, enim neque fringilla
-              nunc,
-              eget faucibus lacus sem quis nunc suspendisse nec lectus sit amet augue rutrum vulputate ut ut mi. Aenean
-              elementum, mi sit amet porttitor lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
-              dolor
-              sit amet nullam consequat feugiat dolore tempus.
-            </p>
-            <p>
-              Nunc diam iaculis massa, et aliquet nibh leo non nisl vitae porta lobortis, enim neque fringilla nunc,
-              eget faucibus lacus sem quis nunc suspendisse nec lectus sit amet augue rutrum vulputate ut ut mi. Aenean
-              elementum, mi sit amet porttitor lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
-              dolor
-              sit amet nullam consequat feugiat dolore tempus.
-            </p>
-          </section>
-          <section>
-            <header>
-              <h3>So in conclusion ...</h3>
-            </header>
-            <p>
-              Nunc diam iaculis massa, et aliquet nibh leo non nisl vitae porta lobortis, enim neque fringilla nunc,
-              eget faucibus lacus sem quis nunc suspendisse nec lectus sit amet augue rutrum vulputate ut ut mi. Aenean
-              elementum, mi sit amet porttitor lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
-              dolor
-              sit amet nullam consequat feugiat dolore tempus. Elementum odio duis semper risus et lectus commodo
-              fringilla.
-              Maecenas sagittis convallis justo vel mattis.
-            </p>
-          </section>
+
+          <form>
+            <div class="form-control">
+              <input type="text" [(ngModel)]="text" (ngModelChange)="filter()" name="filter" placeholder="Search by Item Name"/>
+            </div>
+          </form>
+
+          <div class="example-table-container">
+            <table mat-table [dataSource]="dataSource" matSort class="example-table">
+              <!-- NAME -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="Item Name">Iten Name</th>
+                <td mat-cell *matCellDef="let row">{{row["Item Name"]}}</td>
+              </ng-container>
+              <!-- ENCHANT LEVEL -->
+              <ng-container matColumnDef="enchantLevel">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="EnchantLevel">Enchant Level</th>
+                <td mat-cell *matCellDef="let row">{{row.EnchantLevel}}</td>
+              </ng-container>
+        
+              <!-- ENCHANT RATIO -->
+              <ng-container matColumnDef="enchantRatio">
+                <th mat-header-cell *matHeaderCellDef>Enchant Ratio</th>
+                <td mat-cell *matCellDef="let row" [ngStyle]="{'color': getRatioColor(row.EnchantRatio), 'font-weight': 'bold'}">{{row.EnchantRatio}}%</td>
+              </ng-container>
+        
+              <!-- BREAK -->
+              <ng-container matColumnDef="breakRatio">
+                <th mat-header-cell *matHeaderCellDef>Break Ratio</th>
+                <td mat-cell *matCellDef="let row">{{row.BreakRatio}}%</td>
+              </ng-container>
+
+              <!-- MIN DOWN -->
+              <ng-container matColumnDef="minDowngrade">
+                <th mat-header-cell *matHeaderCellDef>Min. Downgrade</th>
+                <td mat-cell *matCellDef="let row">{{row.MinDowngrade}}</td>
+              </ng-container>
+
+              <!-- MAX DOWN -->
+              <ng-container matColumnDef="maxDowngrade">
+                <th mat-header-cell *matHeaderCellDef>Max. Downgrade</th>
+                <td mat-cell *matCellDef="let row">{{row.MaxDowngrade}}</td>
+              </ng-container>
+
+              <!-- GOLD -->
+              <ng-container matColumnDef="gold">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="Gold">Gold</th>
+                <td mat-cell *matCellDef="let row">{{row.Gold}} <img src="assets/images/materials/Gold.png"/></td>
+              </ng-container>
+        
+              <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+              <tr class="mat-row no-data" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter <strong>"{{text}}"</strong></td>
+              </tr>
+            </table>
+          </div>
+        
+          <mat-paginator [length]="resultsLength" [pageSize]="500" showFirstLastButtons></mat-paginator>
         </article>
       </div>
     </div>

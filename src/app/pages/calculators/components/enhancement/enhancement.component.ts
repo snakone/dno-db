@@ -35,7 +35,7 @@ export class EnhancementComponent {
   pieceList = DNO_ITEM_PIECE_LIST;
   jellyList = DNO_BINARY_LIST;
   friendList = DNO_BINARY_LIST;
-  springList = [{key: 10, label: 'Stage 1: 10%'}, {key: 20, label: 'Stage 2: 20%'}, {key: 30, label: 'Stage 3: 30%'}];
+  springList = [{key: 1, label: 'No'}, {key: 10, label: 'Stage 1: 10%'}, {key: 20, label: 'Stage 2: 20%'}, {key: 30, label: 'Stage 3: 30%'}];
 
   result$: Observable<CalculationResult | null> | undefined;
   loading$: Observable<boolean> | undefined;
@@ -115,6 +115,10 @@ export class EnhancementComponent {
     else if(ratio > 25 && ratio <= 65) { return 'darkcyan' }
     else if(ratio > 65 && ratio < 100) { return 'darkslategray' }
     return 'chartreuse';
+  }
+
+  ngOnDestroy() {
+    this.reset();
   }
 
 }

@@ -30,3 +30,35 @@ button[mat-menu-item] {
 .mat-mdc-menu-item {
   min-height: 36px !important;
 }
+
+.mat-mdc-icon-button.mat-mdc-button-base {
+  width: 33px !important;
+  height: 33px !important;
+  padding: 5px !important;
+  margin-left: 0.7em;
+
+  & svg {
+    position: relative;
+    top: 1px;
+  }
+}
+
+th {
+  &.mat-column-name {
+    min-width: 310px;
+    max-width: 310px;
+    width: 310px;
+  }
+}
+
+.mat-mdc-table, .mat-mdc-paginator {
+  background-color: var(--light-color) !important;
+}
+
+th, tr, td {
+  color: var(--text-color);
+}
+
+.mat-mdc-paginator {
+  color: var(--text-color) !important;
+}

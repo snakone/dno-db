@@ -45,26 +45,6 @@ form {
   }
 }
 
-.form-control {
-  margin-bottom: 1.5em;
-
-  & input, select {
-    transition: 100ms border ease-in-out;
-
-    &[disabled] {
-      opacity: .3;
-      pointer-events: none;
-    }
-  }
-
-  &:hover {
-    input:not([disabled]), select:not([disabled]) {
-      cursor: pointer;
-      border-color: var(--active-color);
-    }
-  }
-}
-
 button[disabled] {
   pointer-events: none;
   filter: grayscale(2);
@@ -144,55 +124,4 @@ img.material-image {
 .claim {
   margin-top: 2em;
   margin-bottom: 0;
-}
-
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba($color: #000000, $alpha: 0.7);
-  z-index: 10000;
-  display: block;
-  overflow: hidden;
-  display: grid;
-  place-items: center;
-}
-
-.loader {
-  width: 82px;
-  height: 82px;
-  border-radius: 50%;
-  position: relative;
-  animation: rotate 1s linear infinite
-}
-
-.loader::before , .loader::after {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  inset: 0px;
-  border-radius: 50%;
-  border: 5px solid #FFF;
-  animation: prixClipFix 2s linear infinite ;
-}
-
-.loader::after{
-  border-color: var(--active-color);
-  animation: prixClipFix 2s linear infinite , rotate 0.5s linear infinite reverse;
-  inset: 6px;
-}
-
-@keyframes rotate {
-  0%   {transform: rotate(0deg)}
-  100%   {transform: rotate(360deg)}
-}
-
-@keyframes prixClipFix {
-    0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
-    25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
-    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
-    75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
-    100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
 }

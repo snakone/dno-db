@@ -85,7 +85,7 @@ export interface DNO_EnhancementItem {
   Details: DNO_EnhancementItemDetails[];
   Level: number;
   Rarity: number;
-  item: string;
+  name: string;
 }
 
 export interface DNO_EnhancementItemBaseStats {
@@ -145,4 +145,19 @@ interface ServerResponse {
 
 export interface DNOItemResponse extends ServerResponse {
   item: DNO_EnhancementItem;
+}
+
+export interface DNOItemMaterial {
+  _id?: string;
+  "Item Name": string;
+  EnchantLevel: number;
+  EnchantRatio: number;
+  BreakRatio: number;
+  MinDowngrade: number;
+  MaxDowngrade: number;
+  Gold: number;
+}
+
+export interface DNOItemMaterialResponse extends ServerResponse {
+  items: DNOItemMaterial[];
 }
