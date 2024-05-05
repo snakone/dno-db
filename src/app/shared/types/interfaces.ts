@@ -67,7 +67,7 @@ export interface UpdateItem {
   date: string;
   title: string;
   body: string;
-  url: string;
+  url?: string;
 }
 
 export interface EnhancementTry {

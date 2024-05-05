@@ -9,6 +9,8 @@ import { DatabaseRoutingModule } from './database-routing.module';
 import { DatabaseComponent } from './database.component';
 import { MatSortModule } from '@angular/material/sort';
 import { FormsModule } from '@angular/forms';
+import { DbMaterialsComponent } from './components/db-materials/db-materials.component';
+import { RouterModule } from '@angular/router';
 
 const Material = [
   MatPaginatorModule,
@@ -20,12 +22,14 @@ const Material = [
 
 @NgModule({
   declarations: [
-    DatabaseComponent
+    DatabaseComponent,
+    DbMaterialsComponent
   ],
   imports: [
     CommonModule,
     DatabaseRoutingModule,
     FormsModule,
+    RouterModule,
     ...Material
   ]
 })

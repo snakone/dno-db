@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { UpdatesFacade } from '@core/ngrx/updates/updates.facade';
+import { environment } from '@env/environment';
 import { UpdateItem } from '@shared/types/interfaces';
 import { Observable } from 'rxjs';
 
@@ -14,7 +15,9 @@ export class FooterComponent {
 
   updates$: Observable<UpdateItem[]> | undefined = undefined;
 
-  constructor(private updatesFacade: UpdatesFacade) {
+  version = environment.version;
+
+  constructor(updatesFacade: UpdatesFacade) {
     this.updates$ = updatesFacade.updates$;
   }
 

@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { Router } from '@angular/router';
 import { HEADER_ITEMS } from '@shared/app.data';
 
 @Component({
@@ -18,7 +19,7 @@ export class HeaderComponent {
   items = HEADER_ITEMS;
   mode: string | undefined;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   public openDrawer(): void {
     if (this.drawer) {
@@ -49,6 +50,11 @@ export class HeaderComponent {
   public toggleTheme(): void {
     const isDark = document.body.classList.toggle('dark');
     this.mode = isDark ? 'dark' : 'light';
+  }
+
+  public navigate(route: string): void {
+    this.closeDrawer();
+    this.router.navigateByUrl(route);
   }
 
 }

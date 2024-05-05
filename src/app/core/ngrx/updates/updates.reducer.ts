@@ -11,35 +11,22 @@ export interface UpdatesState {
 export const inititalState: UpdatesState = {
   updates: [
     {
-      date: 'Jan 27',
-      title: 'Lorem dolor sit amet veroeros',
-      body: 'Ipsum dolor sit amet veroeros consequat blandit ipsum phasellus lorem consequat etiam.',
-      url: '/home'
+      date: 'May 05',
+      title: 'Enhancement Database',
+      body: 'All craftable items in one place with the custom DNO Official changes.',
+      url: '/database/materials'
     },
     {
-      date: 'Jan 23',
-      title: 'Ipsum sed blandit nisl consequat',
-      body: 'Blandit phasellus lorem ipsum dolor tempor sapien tortor hendrerit adipiscing feugiat lorem.',
-      url: '/home'
+      date: 'May 03',
+      title: 'Enhancement Calculator',
+      body: 'Have you ever wonder how much it will cost to upgrade your favourite weapon?',
+      url: '/calculators/enhancement'
     },
     {
-      date: 'Jan 15',
-      title: 'Magna tempus lorem feugiat',
-      body: 'Dolore consequat sed phasellus lorem sed etiam nullam dolor etiam sed amet sit consequat.',
-      url: '/home'
+      date: 'May 01',
+      title: 'DNO-DB has born!',
+      body: 'Welcome every DN Lover! We are here to help players in their journey on Althea!'
     },
-    {
-      date: 'Jan 12',
-      title: 'Dolore tempus ipsum feugiat nulla',
-      body: 'Feugiat lorem dolor sed nullam tempus lorem ipsum dolor sit amet nullam consequat.',
-      url: '/home'
-    },
-    {
-      date: 'Jan 10',
-      title: 'Blandit tempus aliquam?',
-      body: 'Feugiat sed tempus blandit tempus adipiscing nisl lorem ipsum dolor sit amet dolore.',
-      url: '/home'
-    }
   ],
   error: null,
   loaded: false,

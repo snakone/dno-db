@@ -1,7 +1,7 @@
 @if((loading$ | async); as loading) {
-  <div class="backdrop">
-    <span class="loader"></span>
-  </div>
+<div class="backdrop">
+  <span class="loader"></span>
+</div>
 }
 
 @if (calculation) {
@@ -42,7 +42,7 @@
               </select>
             </div>
           </div>
-        <!-- SET -->
+          <!-- SET -->
           <div class="col-4 col-12-small">
             <div class="form-control">
               <label for="set">Choose a Set:</label>
@@ -222,7 +222,7 @@
             <div>to <strong>{{try.to}}</strong></div>
             @if(try.rate) {
             <div style="margin: auto;">Rate:
-              <strong [ngStyle]="{'color': getRatioColor(try.rate), 'font-weight': 'bold'}">{{try.rate}}%</strong>
+              <strong [ngStyle]="{'color': getColor(try.rate), 'font-weight': 'bold'}">{{try.rate}}%</strong>
             </div>
             }
           </div>

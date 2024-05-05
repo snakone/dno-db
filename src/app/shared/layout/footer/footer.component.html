@@ -10,7 +10,7 @@
             @for(update of updates$ | async; track update.url) {
               <li>
                 <span class="date" [innerHTML]="getDateToString(update.date)"></span>
-                <h3><a href="#">{{update.title}}</a></h3>
+                <h3 [routerLink]="update.url ? update.url : null">{{update.title}}</h3>
                 <p>{{update.body}}</p>
               </li>
             }
@@ -30,11 +30,12 @@
           </p>
           <footer>
             <ul class="actions">
-              <li><a href="#" class="button">Find out more</a></li>
+              <li [routerLink]="'/about'"><a class="button">Find out more</a></li>
             </ul>
           </footer>
         </section>
       </div>
     </div>
   </div>
+  <span class="version">{{version}}</span>
 </section>

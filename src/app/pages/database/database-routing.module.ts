@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DatabaseComponent } from './database.component';
+import { DbMaterialsComponent } from './components/db-materials/db-materials.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DatabaseComponent
+    component: DatabaseComponent,
+  },
+  {
+    path: 'materials',
+    component: DbMaterialsComponent
   }
 ];
 

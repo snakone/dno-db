@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer.component';
 import { SnippetsModule } from '@shared/snippets/snippets.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { SnippetsModule } from '@shared/snippets/snippets.module';
   ],
   imports: [
     CommonModule,
-    SnippetsModule
+    SnippetsModule,
+    RouterModule
   ],
   exports: [
     FooterComponent

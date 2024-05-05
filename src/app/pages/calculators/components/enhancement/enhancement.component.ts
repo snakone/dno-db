@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { Calculation } from '@shared/types/classes';
 import { CalculatorFacade } from '@core/ngrx/calculators/calculator.facade';
@@ -20,6 +20,7 @@ import {
   DNO_BINARY_LIST,
   SET_PIECES_BY_CLASS
 } from '@shared/data.dno';
+import { getRatioColor } from '@shared/utils.app';
 
 @Component({
   selector: 'app-enhancement',
@@ -109,12 +110,8 @@ export class EnhancementComponent {
     return this.calculation.jellies !== BINARY_LIST.YES ? materials.filter(mat => mat.key !== 'Item Protection Jellies') : materials;
   }
 
-  public getRatioColor(ratio: number = 0): string {
-    if(ratio <= 15) { return 'crimson'; }
-    else if(ratio > 15 && ratio <= 35) { return 'chocolate'; }
-    else if(ratio > 25 && ratio <= 65) { return 'darkcyan' }
-    else if(ratio > 65 && ratio < 100) { return 'darkslategray' }
-    return 'chartreuse';
+  public getColor(ratio: number = 0): string {
+    return getRatioColor(ratio);
   }
 
   ngOnDestroy() {

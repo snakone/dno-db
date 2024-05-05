@@ -1,5 +1,9 @@
 /* Footer */
 
+section {
+  position: relative;
+}
+
 #footer {
   position: relative;
   color: #858484;
@@ -60,4 +64,18 @@
   .col-4.col-12-medium {
     padding-top: 0 !important;
   }
+}
+
+#footer h3 {
+  cursor: pointer;
+}
+
+.version {
+  position: absolute;
+  bottom: 0;
+  left: 4px;
+  color: #fff;
+  font-size: 12px;
+  display: block;
+  height: 24px;
 }

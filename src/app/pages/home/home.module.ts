@@ -6,6 +6,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { FeaturesComponent } from './components/features/features.component';
 import { IntroComponent } from './components/intro/intro.component';
 import { HomeGuidesComponent } from './components/guides/home-guides.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HomeGuidesComponent } from './components/guides/home-guides.component';
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    RouterModule
   ]
 })
 

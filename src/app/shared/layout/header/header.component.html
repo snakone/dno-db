@@ -18,21 +18,11 @@
       <li class="dropdown" #trigger="matMenuTrigger" [matMenuTriggerFor]="database">Menu</li>
       <mat-menu #database="matMenu" [class]="'dropdown-menu'">
         <li>
-          <button mat-menu-item>Vertebrates</button>
-        </li>
-        <li>
-          <button mat-menu-item>Invertebrates</button>
-        </li>
-        <li>
           <button mat-menu-item [matMenuTriggerFor]="calculators">Calculators</button>
         </li>
       </mat-menu>
       <mat-menu #calculators="matMenu" [class]="'dropdown-submenu'">
         <button mat-menu-item [routerLink]="'/calculators/enhancement'">Enhancement</button>
-        <button mat-menu-item>Amphibians</button>
-        <button mat-menu-item>Reptiles</button>
-        <button mat-menu-item>Birds</button>
-        <button mat-menu-item>Mammals</button>
       </mat-menu>
     </ul>
   </nav>
@@ -46,50 +36,17 @@
 <q-drawer menuid="main" #drawer>
   <div id="navPanel">
     <nav>
-      <a class="link depth-0" href="index.html" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-        <span class="indent-0"></span>Home
+      @for(item of items; track item.label) {
+        <a class="link depth-0" (click)="navigate(item.key)">
+          <span class="indent-0"></span>{{item.label}}
+        </a>
+      }
+      
+      <a class="link depth-0">
+        <span class="indent-0"></span>- Calculators
       </a>
-      <a class="link depth-0" href="#" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-        <span class="indent-0"></span>Dropdown
-      </a>
-      <a class="link depth-1" href="#" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-        <span class="indent-1"></span>Lorem ipsum dolor
-      </a>
-      <a class="link depth-1" href="#" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-        <span class="indent-1"></span>Magna phasellus
-      </a>
-      <a class="link depth-1" href="#" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-        <span class="indent-1"></span>Etiam dolore nisl
-      </a>
-      <a class="link depth-1" href="#" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-        <span class="indent-1"></span>Phasellus consequat
-      </a>
-      <a class="link depth-2" href="#" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-        <span class="indent-2"></span>Magna phasellus
-      </a>
-      <a class="link depth-2" href="#" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-        <span class="indent-2"></span>Etiam dolore nisl
-      </a>
-      <a class="link depth-2" href="#" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-        <span class="indent-2"></span>Veroeros feugiat
-      </a>
-      <a class="link depth-2" href="#" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-        <span class="indent-2"></span>Nisl sed aliquam
-      </a>
-      <a class="link depth-2" href="#" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-        <span class="indent-2"></span>Dolore adipiscing
-      </a>
-      <a class="link depth-1" href="#" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-        <span class="indent-1"></span>Veroeros feugiat
-      </a>
-      <a class="link depth-0" href="left-sidebar.html" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-        <span class="indent-0"></span>Left Sidebar
-      </a>
-      <a class="link depth-0" href="right-sidebar.html" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-        <span class="indent-0"></span>Right Sidebar
-      </a>
-      <a class="link depth-0" href="no-sidebar.html" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-        <span class="indent-0"></span>No Sidebar
+      <a class="link depth-1" (click)="navigate('/calculators/enhancement')">
+        <span class="indent-1"></span>Enhancement
       </a>
     </nav>
   </div>

@@ -44,6 +44,10 @@
   outline: 0;
 }
 
+#navPanel a {
+  cursor: pointer;
+}
+
 #nav > ul > li:hover > a, #nav > ul > li.active > a {
   background: #f3f3f3;
 }
