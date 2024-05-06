@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
+import { StorageService } from '@core/services/storage/storage.service';
 import { HEADER_ITEMS } from '@shared/app.data';
 
 @Component({
@@ -19,7 +20,7 @@ export class HeaderComponent {
   items = HEADER_ITEMS;
   mode: string | undefined;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private ls: StorageService) {}
 
   public openDrawer(): void {
     if (this.drawer) {
@@ -50,6 +51,7 @@ export class HeaderComponent {
   public toggleTheme(): void {
     const isDark = document.body.classList.toggle('dark');
     this.mode = isDark ? 'dark' : 'light';
+    this.ls.setKey('theme', this.mode);
   }
 
   public navigate(route: string): void {

@@ -6,6 +6,9 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreEffects, appReducers } from './ngrx/ngrx.index';
 import { HttpService } from './services/http/http.service';
+import { NgxWebstorageModule } from 'ngx-webstorage';
+import { CORE_MODULE_CONSTANTS } from './core.module.config';
+import { StorageModule } from './services/storage/storage.module';
 
 @NgModule({
   imports: [
@@ -17,6 +20,8 @@ import { HttpService } from './services/http/http.service';
     }),
     StoreModule.forFeature('AppState', appReducers),
     EffectsModule.forRoot([...StoreEffects]),
+    NgxWebstorageModule.forRoot(CORE_MODULE_CONSTANTS.WEBSTORAGE_CONFIG),
+    StorageModule
   ],
   providers: [
     HttpService

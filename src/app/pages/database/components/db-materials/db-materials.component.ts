@@ -34,7 +34,7 @@ export class DbMaterialsComponent {
     this.dataSource.sort = this.sort;
 
     this.dataSource.filterPredicate = (data, filter) => {
-      return data['Item Name'].includes(filter);
+      return data['Item Name'].toLowerCase().includes(filter.toLowerCase());
     }
 
     this.paginator.page.pipe(
