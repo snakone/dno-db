@@ -161,3 +161,99 @@ export interface DNOItemMaterial {
 export interface DNOItemMaterialResponse extends ServerResponse {
   items: DNOItemMaterial[];
 }
+
+export interface SkillBuildContainer {
+  name: string;
+  class: string;
+  icon: string;
+  currentSP: number;
+  totalSP: number;
+  tree: SkillBuildTree;
+}
+
+export interface SkillBuildTree {
+  rows: SkillBuildTreeRow;
+}
+
+export interface SkillBuildTreeRow {
+  id: string;
+  currentPoints: number;
+  totalPoints: number;
+  image: string;
+  stats: SkillBuildTreeRowStats[];
+  requires: (row: SkillBuildTreeRow) => boolean;
+  depends: SkillBuildTreeRow[];
+}
+
+export interface SkillBuildTreeRowStats {
+  type: string;
+  element: string;
+  weapon: string;
+  description: string;
+  level: number;
+  cost: number;
+  learnAt: number;
+  cooldown: number;
+}
+
+export interface ClassStats {
+  className: string;
+  pdmgStr: number;
+  pdmgAgi: number;
+  mdmgInt: number;
+  critdmgStr: number;
+  critdmgAgi: number;
+  critdmgInt: number;
+  hpVit: number;
+  pdefVit: number;
+  mdefInt: number;
+  critAgi: number;
+}
+
+export const classStats = {
+  [DNO_CLASSES.WARRIOR]: [
+    { className: "Gladiator", pdmgStr: 0.75, pdmgAgi: 0.25, mdmgInt: 0, critdmgStr: 3.25, critdmgAgi: 0, critdmgInt: 0, hpVit: 35, pdefVit: 0.9, mdefInt: 0, critAgi: 6 },
+    { className: "Moonlord", pdmgStr: 0, pdmgAgi: 0, mdmgInt: 1, critdmgStr: 0, critdmgAgi: 0, critdmgInt: 3.25, hpVit: 35, pdefVit: 0.9, mdefInt: 0, critAgi: 6 },
+    { className: "Barbarian", pdmgStr: 0.75, pdmgAgi: 0.25, mdmgInt: 0, critdmgStr: 3.25, critdmgAgi: 0, critdmgInt: 0, hpVit: 35, pdefVit: 0.9, mdefInt: 0, critAgi: 6 },
+    { className: "Destroyer", pdmgStr: 0.75, pdmgAgi: 0.25, mdmgInt: 0, critdmgStr: 3.25, critdmgAgi: 0, critdmgInt: 0, hpVit: 45, pdefVit: 0.9, mdefInt: 0, critAgi: 6 },
+  ],
+  [DNO_CLASSES.ARCHER]: [
+    { className: "Sniper", pdmgStr: 0.25, pdmgAgi: 0.75, mdmgInt: 0, critdmgStr: 6, critdmgAgi: 0, critdmgInt: 0, hpVit: 28, pdefVit: 0.7, mdefInt: 0, critAgi: 3.25 },
+    { className: "Sentinel", pdmgStr: 0, pdmgAgi: 0, mdmgInt: 1, critdmgStr: 0, critdmgAgi: 0, critdmgInt: 3.25, hpVit: 28, pdefVit: 0.7, mdefInt: 0, critAgi: 6 },
+    { className: "Tempest", pdmgStr: 0.25, pdmgAgi: 0.75, mdmgInt: 0, critdmgStr: 6, critdmgAgi: 0, critdmgInt: 0, hpVit: 28, pdefVit: 0.7, mdefInt: 0, critAgi: 3.25 },
+    { className: "Windwalker", pdmgStr: 0.25, pdmgAgi: 0.75, mdmgInt: 0, critdmgStr: 6, critdmgAgi: 0, critdmgInt: 0, hpVit: 28, pdefVit: 0.7, mdefInt: 0, critAgi: 3.25 },
+  ],
+  [DNO_CLASSES.ACADEMIC]: [
+    { className: "Shooting Star", pdmgStr: 0.25, pdmgAgi: 0.75, mdmgInt: 0, critdmgStr: 6, critdmgAgi: 0, critdmgInt: 0, hpVit: 30, pdefVit: 0.7, mdefInt: 0, critAgi: 3.25 },
+    { className: "Gear Master", pdmgStr: 0.25, pdmgAgi: 0.75, mdmgInt: 0, critdmgStr: 6, critdmgAgi: 0, critdmgInt: 0, hpVit: 30, pdefVit: 0.7, mdefInt: 0, critAgi: 3.25 },
+    { className: "Adept", pdmgStr: 0, pdmgAgi: 0, mdmgInt: 0.8, critdmgStr: 0, critdmgAgi: 0, critdmgInt: 3.25, hpVit: 30, pdefVit: 0.7, mdefInt: 0, critAgi: 6 },
+    { className: "Physician", pdmgStr: 0, pdmgAgi: 0, mdmgInt: 0.8, critdmgStr: 0, critdmgAgi: 0, critdmgInt: 3.25, hpVit: 30, pdefVit: 0.7, mdefInt: 0, critAgi: 6 },
+  ],
+  [DNO_CLASSES.ASSASSIN]: [
+    { className: "Reaper", pdmgStr: 0.5, pdmgAgi: 0.5, mdmgInt: 0, critdmgStr: 2.875, critdmgAgi: 0, critdmgInt: 0, hpVit: 26, pdefVit: 0.5, mdefInt: 0, critAgi: 2.875 },
+    { className: "Raven", pdmgStr: 0.5, pdmgAgi: 0.5, mdmgInt: 0, critdmgStr: 2.875, critdmgAgi: 0, critdmgInt: 0, hpVit: 26, pdefVit: 0.5, mdefInt: 0, critAgi: 2.875 },
+    { className: "Light Fury", pdmgStr: 0.5, pdmgAgi: 0.5, mdmgInt: 0, critdmgStr: 2.875, critdmgAgi: 0, critdmgInt: 0, hpVit: 26, pdefVit: 0.5, mdefInt: 0, critAgi: 2.875 },
+    { className: "Abyss Walker", pdmgStr: 0.5, pdmgAgi: 0.5, mdmgInt: 0, critdmgStr: 2.875, critdmgAgi: 0, critdmgInt: 0, hpVit: 26, pdefVit: 0.5, mdefInt: 0, critAgi: 2.875 },
+  ],
+  [DNO_CLASSES.CLERIC]: [
+    { className: "Guardian", pdmgStr: 0.75, pdmgAgi: 0.25, mdmgInt: 0, critdmgStr: 3.25, critdmgAgi: 0, critdmgInt: 0, hpVit: 35, pdefVit: 1, mdefInt: 0, critAgi: 6 },
+    { className: "Crusader", pdmgStr: 0, pdmgAgi: 0, mdmgInt: 1, critdmgStr: 0, critdmgAgi: 0, critdmgInt: 3.25, hpVit: 35, pdefVit: 1, mdefInt: 0, critAgi: 6 },
+    { className: "Saint", pdmgStr: 0, pdmgAgi: 0, mdmgInt: 0.8, critdmgStr: 0, critdmgAgi: 0, critdmgInt: 3.25, hpVit: 35, pdefVit: 1, mdefInt: 0, critAgi: 6 },
+    { className: "Inquisitor", pdmgStr: 0, pdmgAgi: 0, mdmgInt: 0.8, critdmgStr: 0, critdmgAgi: 0, critdmgInt: 3.25, hpVit: 35, pdefVit: 1, mdefInt: 0, critAgi: 6 },
+  ],
+  [DNO_CLASSES.KALI]: [
+    { className: "Dark Summoner", pdmgStr: 0, pdmgAgi: 0, mdmgInt: 0.8, critdmgStr: 0, critdmgAgi: 0, critdmgInt: 3.25, hpVit: 26, pdefVit: 0.9, mdefInt: 0, critAgi: 6 },
+    { className: "Soul Eater", pdmgStr: 0, pdmgAgi: 0, mdmgInt: 0.8, critdmgStr: 0, critdmgAgi: 0, critdmgInt: 3.25, hpVit: 26, pdefVit: 0.9, mdefInt: 0, critAgi: 6 },
+    { className: "Blade Dancer", pdmgStr: 0.75, pdmgAgi: 0.25, mdmgInt: 0, critdmgStr: 3.25, critdmgAgi: 0, critdmgInt: 0, hpVit: 26, pdefVit: 0.9, mdefInt: 0, critAgi: 6 },
+    { className: "Spirit Dancer", pdmgStr: 0.75, pdmgAgi: 0.25, mdmgInt: 0, critdmgStr: 3.25, critdmgAgi: 0, critdmgInt: 0, hpVit: 26, pdefVit: 0.9, mdefInt: 0, critAgi: 6 },
+  ],
+  [DNO_CLASSES.LANCEA]: [
+    { className: "Flurry", pdmgStr: 0.75, pdmgAgi: 0.25, mdmgInt: 0, critdmgStr: 3.25, critdmgAgi: 0, critdmgInt: 0, hpVit: 34, pdefVit: 1, mdefInt: 0, critAgi: 6 },
+  ],
+  [DNO_CLASSES.SORCERESS]: [
+    { className: "Seleana", pdmgStr: 0, pdmgAgi: 0, mdmgInt: 0.8, critdmgStr: 0, critdmgAgi: 0, critdmgInt: 3.25, hpVit: 26, pdefVit: 0.6, mdefInt: 0, critAgi: 6 },
+    { className: "Glaciana", pdmgStr: 0, pdmgAgi: 0, mdmgInt: 0.8, critdmgStr: 0, critdmgAgi: 0, critdmgInt: 3.25, hpVit: 26, pdefVit: 0.6, mdefInt: 0, critAgi: 6 },
+    { className: "Illuminia", pdmgStr: 0, pdmgAgi: 0, mdmgInt: 0.8, critdmgStr: 0, critdmgAgi: 0, critdmgInt: 3.25, hpVit: 26, pdefVit: 0.6, mdefInt: 0, critAgi: 6 },
+    { className: "Obscuria", pdmgStr: 0, pdmgAgi: 0, mdmgInt: 0.8, critdmgStr: 0, critdmgAgi: 0, critdmgInt: 3.25, hpVit: 26, pdefVit: 0.6, mdefInt: 0, critAgi: 6 },
+  ]
+}

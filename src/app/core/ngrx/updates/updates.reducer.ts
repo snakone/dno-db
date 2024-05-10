@@ -11,6 +11,12 @@ export interface UpdatesState {
 export const inititalState: UpdatesState = {
   updates: [
     {
+      date: 'May 10',
+      title: 'Scaling Database',
+      body: 'Class stats scaling for 2nd specialization.',
+      url: '/database/class-scaling'
+    },
+    {
       date: 'May 05',
       title: 'Enhancement Database',
       body: 'All craftable items in one place with the custom DNO Official changes.',

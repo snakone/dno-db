@@ -11,6 +11,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { FormsModule } from '@angular/forms';
 import { DbMaterialsComponent } from './components/db-materials/db-materials.component';
 import { RouterModule } from '@angular/router';
+import { ClassScalingComponent } from './components/class-scaling/class-scaling.component';
 
 const Material = [
   MatPaginatorModule,
@@ -23,7 +24,8 @@ const Material = [
 @NgModule({
   declarations: [
     DatabaseComponent,
-    DbMaterialsComponent
+    DbMaterialsComponent,
+    ClassScalingComponent
   ],
   imports: [
     CommonModule,

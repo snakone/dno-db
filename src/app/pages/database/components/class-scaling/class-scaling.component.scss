@@ -1,0 +1,57 @@
+#main {
+  padding-top: 3em;
+}
+
+.example-table-container {
+  position: relative;
+  min-height: 200px;
+  max-height: 666px;
+  overflow: auto;
+}
+
+h3 {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1em;
+
+  & img {
+    position: relative;
+    top: 13px;
+    margin-right: 10px;
+  }
+}
+
+table {
+  & th {
+    padding: 0 4px;
+    font-size: 12px;
+  }
+
+  & tr {
+    height: 30px;
+
+    & td {
+      font-size: 12px;
+
+      &:first-child {
+        width: 350px;
+      }
+
+      &:not(:first-child) {
+        width: 90px !important;
+      }
+    }
+  }
+
+  & img {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    margin-right: 12px;
+    top: 10px;
+  }
+}
+
+.empty {
+  width: 200px;
+}

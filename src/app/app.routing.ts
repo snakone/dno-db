@@ -34,6 +34,12 @@ const routes: Routes = [
         .then(mod => mod.CalculatorsModule), data: { name: 'Calculators' }
   },
   {
+    path: 'builds',
+    loadChildren: () =>
+      import('./pages/builds/builds.module')
+        .then(mod => mod.BuildsModule), data: { name: 'Builds' }
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }

@@ -1,0 +1,624 @@
+<section id="main">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <!-- Content -->
+        <article class="box post">
+          <header>
+            <h2>Class Scaling</h2>
+            <p>"2nd Specialization Class Stats Scaling"</p>
+          </header>
+          <!-- WARRIOR -->
+          <h3><img src="assets/images/classes/Warrior.webp"/> Warrior</h3>
+          <div class="example-table-container">
+            <table mat-table [dataSource]="dataSourceWarrior" matSort #warrior="matSort" class="example-table">
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+              <!-- Class -->
+              <ng-container matColumnDef="className">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="className" class="empty"></th>
+                <td mat-cell *matCellDef="let row">
+                  <img [src]="'assets/images/classes/' + row.className + '.webp'"/>
+                  {{row.className}}
+                </td>
+              </ng-container>
+
+              <!-- pdmgStr -->
+              <ng-container matColumnDef="pdmgStr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdmgStr">PDMG/STR</th>
+                <td mat-cell *matCellDef="let row">{{row.pdmgStr}}</td>
+              </ng-container>
+
+              <!-- pdmgAgi -->
+              <ng-container matColumnDef="pdmgAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdmgAgi">PDMG/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.pdmgAgi}}</td>
+              </ng-container>
+              
+              <!-- mdmgInt -->
+              <ng-container matColumnDef="mdmgInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="mdmgInt">MDMG/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.mdmgInt}}</td>
+              </ng-container>
+              
+              <!-- critdmgStr -->
+              <ng-container matColumnDef="critdmgStr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgStr">CRITDMG/STR</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgStr}}</td>
+              </ng-container>
+              
+              <!-- critdmgAgi -->
+              <ng-container matColumnDef="critdmgAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgAgi">CRITDMG/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgAgi}}</td>
+              </ng-container>
+              
+              <!-- critdmgInt -->
+              <ng-container matColumnDef="critdmgInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgInt">CRITDMG/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgInt}}</td>
+              </ng-container>
+              
+              <!-- hpVit -->
+              <ng-container matColumnDef="hpVit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="hpVit">HP/VIT</th>
+                <td mat-cell *matCellDef="let row">{{row.hpVit}}</td>
+              </ng-container>
+              
+              <!-- pdefVit -->
+              <ng-container matColumnDef="pdefVit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdefVit">PDEF/VIT</th>
+                <td mat-cell *matCellDef="let row">{{row.pdefVit}}</td>
+              </ng-container>
+              
+              <!-- mdefInt -->
+              <ng-container matColumnDef="mdefInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="mdefInt">MDEF/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.mdefInt}}</td>
+              </ng-container>
+              
+              <!-- critAgi -->
+              <ng-container matColumnDef="critAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critAgi">CRIT/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.critAgi}}</td>
+              </ng-container>
+            </table>
+          </div>
+          <!-- ARCHER -->
+          <h3><img src="assets/images/classes/Archer.webp"/> Archer</h3>
+          <div class="example-table-container">
+            <table mat-table [dataSource]="dataSourceArcher" matSort #archer="matSort" class="example-table">
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              <!-- Class -->
+              <ng-container matColumnDef="className">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="className"></th>
+                <td mat-cell *matCellDef="let row">
+                  <img [src]="'assets/images/classes/' + row.className + '.webp'"/>
+                  {{row.className}}
+                </td>
+              </ng-container>
+
+              <!-- pdmgStr -->
+              <ng-container matColumnDef="pdmgStr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdmgStr">PDMG/STR</th>
+                <td mat-cell *matCellDef="let row">{{row.pdmgStr}}</td>
+              </ng-container>
+
+              <!-- pdmgAgi -->
+              <ng-container matColumnDef="pdmgAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdmgAgi">PDMG/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.pdmgAgi}}</td>
+              </ng-container>
+              
+              <!-- mdmgInt -->
+              <ng-container matColumnDef="mdmgInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="mdmgInt">MDMG/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.mdmgInt}}</td>
+              </ng-container>
+              
+              <!-- critdmgStr -->
+              <ng-container matColumnDef="critdmgStr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgStr">CRITDMG/STR</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgStr}}</td>
+              </ng-container>
+              
+              <!-- critdmgAgi -->
+              <ng-container matColumnDef="critdmgAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgAgi">CRITDMG/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgAgi}}</td>
+              </ng-container>
+              
+              <!-- critdmgInt -->
+              <ng-container matColumnDef="critdmgInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgInt">CRITDMG/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgInt}}</td>
+              </ng-container>
+              
+              <!-- hpVit -->
+              <ng-container matColumnDef="hpVit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="hpVit">HP/VIT</th>
+                <td mat-cell *matCellDef="let row">{{row.hpVit}}</td>
+              </ng-container>
+              
+              <!-- pdefVit -->
+              <ng-container matColumnDef="pdefVit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdefVit">PDEF/VIT</th>
+                <td mat-cell *matCellDef="let row">{{row.pdefVit}}</td>
+              </ng-container>
+              
+              <!-- mdefInt -->
+              <ng-container matColumnDef="mdefInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="mdefInt">MDEF/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.mdefInt}}</td>
+              </ng-container>
+              
+              <!-- critAgi -->
+              <ng-container matColumnDef="critAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critAgi">CRIT/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.critAgi}}</td>
+              </ng-container>
+            </table>
+          </div>
+          <!-- SORCERESS -->
+          <h3><img src="assets/images/classes/Sorceress.webp"/> Sorceress</h3>
+          <div class="example-table-container">
+            <table mat-table [dataSource]="dataSourceSorceress" matSort #sorceress="matSort" class="example-table">
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              <!-- Class -->
+              <ng-container matColumnDef="className">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="className"></th>
+                <td mat-cell *matCellDef="let row">
+                  <img [src]="'assets/images/classes/' + row.className + '.webp'"/>
+                  {{row.className}}
+                </td>
+              </ng-container>
+
+              <!-- pdmgStr -->
+              <ng-container matColumnDef="pdmgStr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdmgStr">PDMG/STR</th>
+                <td mat-cell *matCellDef="let row">{{row.pdmgStr}}</td>
+              </ng-container>
+
+              <!-- pdmgAgi -->
+              <ng-container matColumnDef="pdmgAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdmgAgi">PDMG/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.pdmgAgi}}</td>
+              </ng-container>
+              
+              <!-- mdmgInt -->
+              <ng-container matColumnDef="mdmgInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="mdmgInt">MDMG/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.mdmgInt}}</td>
+              </ng-container>
+              
+              <!-- critdmgStr -->
+              <ng-container matColumnDef="critdmgStr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgStr">CRITDMG/STR</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgStr}}</td>
+              </ng-container>
+              
+              <!-- critdmgAgi -->
+              <ng-container matColumnDef="critdmgAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgAgi">CRITDMG/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgAgi}}</td>
+              </ng-container>
+              
+              <!-- critdmgInt -->
+              <ng-container matColumnDef="critdmgInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgInt">CRITDMG/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgInt}}</td>
+              </ng-container>
+              
+              <!-- hpVit -->
+              <ng-container matColumnDef="hpVit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="hpVit">HP/VIT</th>
+                <td mat-cell *matCellDef="let row">{{row.hpVit}}</td>
+              </ng-container>
+              
+              <!-- pdefVit -->
+              <ng-container matColumnDef="pdefVit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdefVit">PDEF/VIT</th>
+                <td mat-cell *matCellDef="let row">{{row.pdefVit}}</td>
+              </ng-container>
+              
+              <!-- mdefInt -->
+              <ng-container matColumnDef="mdefInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="mdefInt">MDEF/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.mdefInt}}</td>
+              </ng-container>
+              
+              <!-- critAgi -->
+              <ng-container matColumnDef="critAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critAgi">CRIT/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.critAgi}}</td>
+              </ng-container>
+            </table>
+          </div>
+          <!-- CLERIC -->
+          <h3><img src="assets/images/classes/Cleric.webp"/> Cleric</h3>
+          <div class="example-table-container">
+            <table mat-table [dataSource]="dataSourceCleric" matSort #cleric="matSort" class="example-table">
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              <!-- Class -->
+              <ng-container matColumnDef="className">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="className"></th>
+                <td mat-cell *matCellDef="let row">
+                  <img [src]="'assets/images/classes/' + row.className + '.webp'"/>
+                  {{row.className}}
+                </td>
+              </ng-container>
+
+              <!-- pdmgStr -->
+              <ng-container matColumnDef="pdmgStr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdmgStr">PDMG/STR</th>
+                <td mat-cell *matCellDef="let row">{{row.pdmgStr}}</td>
+              </ng-container>
+
+              <!-- pdmgAgi -->
+              <ng-container matColumnDef="pdmgAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdmgAgi">PDMG/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.pdmgAgi}}</td>
+              </ng-container>
+              
+              <!-- mdmgInt -->
+              <ng-container matColumnDef="mdmgInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="mdmgInt">MDMG/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.mdmgInt}}</td>
+              </ng-container>
+              
+              <!-- critdmgStr -->
+              <ng-container matColumnDef="critdmgStr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgStr">CRITDMG/STR</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgStr}}</td>
+              </ng-container>
+              
+              <!-- critdmgAgi -->
+              <ng-container matColumnDef="critdmgAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgAgi">CRITDMG/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgAgi}}</td>
+              </ng-container>
+              
+              <!-- critdmgInt -->
+              <ng-container matColumnDef="critdmgInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgInt">CRITDMG/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgInt}}</td>
+              </ng-container>
+              
+              <!-- hpVit -->
+              <ng-container matColumnDef="hpVit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="hpVit">HP/VIT</th>
+                <td mat-cell *matCellDef="let row">{{row.hpVit}}</td>
+              </ng-container>
+              
+              <!-- pdefVit -->
+              <ng-container matColumnDef="pdefVit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdefVit">PDEF/VIT</th>
+                <td mat-cell *matCellDef="let row">{{row.pdefVit}}</td>
+              </ng-container>
+              
+              <!-- mdefInt -->
+              <ng-container matColumnDef="mdefInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="mdefInt">MDEF/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.mdefInt}}</td>
+              </ng-container>
+              
+              <!-- critAgi -->
+              <ng-container matColumnDef="critAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critAgi">CRIT/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.critAgi}}</td>
+              </ng-container>
+            </table>
+          </div>
+          <!-- ACADEMIC -->
+          <h3><img src="assets/images/classes/Academic.webp"/> Academic</h3>
+          <div class="example-table-container">
+            <table mat-table [dataSource]="dataSourceAcademic" matSort #academic="matSort" class="example-table">
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              <!-- Class -->
+              <ng-container matColumnDef="className">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="className"></th>
+                <td mat-cell *matCellDef="let row">
+                  <img [src]="'assets/images/classes/' + row.className + '.webp'"/>
+                  {{row.className}}
+                </td>
+              </ng-container>
+
+              <!-- pdmgStr -->
+              <ng-container matColumnDef="pdmgStr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdmgStr">PDMG/STR</th>
+                <td mat-cell *matCellDef="let row">{{row.pdmgStr}}</td>
+              </ng-container>
+
+              <!-- pdmgAgi -->
+              <ng-container matColumnDef="pdmgAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdmgAgi">PDMG/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.pdmgAgi}}</td>
+              </ng-container>
+              
+              <!-- mdmgInt -->
+              <ng-container matColumnDef="mdmgInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="mdmgInt">MDMG/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.mdmgInt}}</td>
+              </ng-container>
+              
+              <!-- critdmgStr -->
+              <ng-container matColumnDef="critdmgStr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgStr">CRITDMG/STR</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgStr}}</td>
+              </ng-container>
+              
+              <!-- critdmgAgi -->
+              <ng-container matColumnDef="critdmgAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgAgi">CRITDMG/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgAgi}}</td>
+              </ng-container>
+              
+              <!-- critdmgInt -->
+              <ng-container matColumnDef="critdmgInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgInt">CRITDMG/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgInt}}</td>
+              </ng-container>
+              
+              <!-- hpVit -->
+              <ng-container matColumnDef="hpVit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="hpVit">HP/VIT</th>
+                <td mat-cell *matCellDef="let row">{{row.hpVit}}</td>
+              </ng-container>
+              
+              <!-- pdefVit -->
+              <ng-container matColumnDef="pdefVit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdefVit">PDEF/VIT</th>
+                <td mat-cell *matCellDef="let row">{{row.pdefVit}}</td>
+              </ng-container>
+              
+              <!-- mdefInt -->
+              <ng-container matColumnDef="mdefInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="mdefInt">MDEF/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.mdefInt}}</td>
+              </ng-container>
+              
+              <!-- critAgi -->
+              <ng-container matColumnDef="critAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critAgi">CRIT/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.critAgi}}</td>
+              </ng-container>
+            </table>
+          </div>
+          <!-- KALI -->
+          <h3><img src="assets/images/classes/Kali.webp"/> Kali</h3>
+          <div class="example-table-container">
+            <table mat-table [dataSource]="dataSourceKali" matSort #kali="matSort" class="example-table">
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              <!-- Class -->
+              <ng-container matColumnDef="className">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="className"></th>
+                <td mat-cell *matCellDef="let row">
+                  <img [src]="'assets/images/classes/' + row.className + '.webp'"/>
+                  {{row.className}}
+                </td>
+              </ng-container>
+
+              <!-- pdmgStr -->
+              <ng-container matColumnDef="pdmgStr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdmgStr">PDMG/STR</th>
+                <td mat-cell *matCellDef="let row">{{row.pdmgStr}}</td>
+              </ng-container>
+
+              <!-- pdmgAgi -->
+              <ng-container matColumnDef="pdmgAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdmgAgi">PDMG/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.pdmgAgi}}</td>
+              </ng-container>
+              
+              <!-- mdmgInt -->
+              <ng-container matColumnDef="mdmgInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="mdmgInt">MDMG/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.mdmgInt}}</td>
+              </ng-container>
+              
+              <!-- critdmgStr -->
+              <ng-container matColumnDef="critdmgStr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgStr">CRITDMG/STR</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgStr}}</td>
+              </ng-container>
+              
+              <!-- critdmgAgi -->
+              <ng-container matColumnDef="critdmgAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgAgi">CRITDMG/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgAgi}}</td>
+              </ng-container>
+              
+              <!-- critdmgInt -->
+              <ng-container matColumnDef="critdmgInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgInt">CRITDMG/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgInt}}</td>
+              </ng-container>
+              
+              <!-- hpVit -->
+              <ng-container matColumnDef="hpVit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="hpVit">HP/VIT</th>
+                <td mat-cell *matCellDef="let row">{{row.hpVit}}</td>
+              </ng-container>
+              
+              <!-- pdefVit -->
+              <ng-container matColumnDef="pdefVit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdefVit">PDEF/VIT</th>
+                <td mat-cell *matCellDef="let row">{{row.pdefVit}}</td>
+              </ng-container>
+              
+              <!-- mdefInt -->
+              <ng-container matColumnDef="mdefInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="mdefInt">MDEF/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.mdefInt}}</td>
+              </ng-container>
+              
+              <!-- critAgi -->
+              <ng-container matColumnDef="critAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critAgi">CRIT/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.critAgi}}</td>
+              </ng-container>
+            </table>
+          </div>
+          <!-- ASSASSIN -->
+          <h3><img src="assets/images/classes/Assassin.webp"/> Assassin</h3>
+          <div class="example-table-container">
+            <table mat-table [dataSource]="dataSourceAssassin" matSort #assassin="matSort" class="example-table">
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              <!-- Class -->
+              <ng-container matColumnDef="className">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="className"></th>
+                <td mat-cell *matCellDef="let row">
+                  <img [src]="'assets/images/classes/' + row.className + '.webp'"/>
+                  {{row.className}}
+                </td>
+              </ng-container>
+
+              <!-- pdmgStr -->
+              <ng-container matColumnDef="pdmgStr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdmgStr">PDMG/STR</th>
+                <td mat-cell *matCellDef="let row">{{row.pdmgStr}}</td>
+              </ng-container>
+
+              <!-- pdmgAgi -->
+              <ng-container matColumnDef="pdmgAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdmgAgi">PDMG/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.pdmgAgi}}</td>
+              </ng-container>
+              
+              <!-- mdmgInt -->
+              <ng-container matColumnDef="mdmgInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="mdmgInt">MDMG/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.mdmgInt}}</td>
+              </ng-container>
+              
+              <!-- critdmgStr -->
+              <ng-container matColumnDef="critdmgStr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgStr">CRITDMG/STR</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgStr}}</td>
+              </ng-container>
+              
+              <!-- critdmgAgi -->
+              <ng-container matColumnDef="critdmgAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgAgi">CRITDMG/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgAgi}}</td>
+              </ng-container>
+              
+              <!-- critdmgInt -->
+              <ng-container matColumnDef="critdmgInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgInt">CRITDMG/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgInt}}</td>
+              </ng-container>
+              
+              <!-- hpVit -->
+              <ng-container matColumnDef="hpVit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="hpVit">HP/VIT</th>
+                <td mat-cell *matCellDef="let row">{{row.hpVit}}</td>
+              </ng-container>
+              
+              <!-- pdefVit -->
+              <ng-container matColumnDef="pdefVit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdefVit">PDEF/VIT</th>
+                <td mat-cell *matCellDef="let row">{{row.pdefVit}}</td>
+              </ng-container>
+              
+              <!-- mdefInt -->
+              <ng-container matColumnDef="mdefInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="mdefInt">MDEF/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.mdefInt}}</td>
+              </ng-container>
+              
+              <!-- critAgi -->
+              <ng-container matColumnDef="critAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critAgi">CRIT/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.critAgi}}</td>
+              </ng-container>
+            </table>
+          </div>
+          <!-- LANCEA -->
+          <h3><img src="assets/images/classes/Lancea.webp"/> Lancea</h3>
+          <div class="example-table-container">
+            <table mat-table [dataSource]="dataSourceLancea" matSort #lancea="matSort" class="example-table">
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              <!-- Class -->
+              <ng-container matColumnDef="className">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="className"></th>
+                <td mat-cell *matCellDef="let row">
+                  <img [src]="'assets/images/classes/' + row.className + '.webp'"/>
+                  {{row.className}}
+                </td>
+              </ng-container>
+
+              <!-- pdmgStr -->
+              <ng-container matColumnDef="pdmgStr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdmgStr">PDMG/STR</th>
+                <td mat-cell *matCellDef="let row">{{row.pdmgStr}}</td>
+              </ng-container>
+
+              <!-- pdmgAgi -->
+              <ng-container matColumnDef="pdmgAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdmgAgi">PDMG/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.pdmgAgi}}</td>
+              </ng-container>
+              
+              <!-- mdmgInt -->
+              <ng-container matColumnDef="mdmgInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="mdmgInt">MDMG/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.mdmgInt}}</td>
+              </ng-container>
+              
+              <!-- critdmgStr -->
+              <ng-container matColumnDef="critdmgStr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgStr">CRITDMG/STR</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgStr}}</td>
+              </ng-container>
+              
+              <!-- critdmgAgi -->
+              <ng-container matColumnDef="critdmgAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgAgi">CRITDMG/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgAgi}}</td>
+              </ng-container>
+              
+              <!-- critdmgInt -->
+              <ng-container matColumnDef="critdmgInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critdmgInt">CRITDMG/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.critdmgInt}}</td>
+              </ng-container>
+              
+              <!-- hpVit -->
+              <ng-container matColumnDef="hpVit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="hpVit">HP/VIT</th>
+                <td mat-cell *matCellDef="let row">{{row.hpVit}}</td>
+              </ng-container>
+              
+              <!-- pdefVit -->
+              <ng-container matColumnDef="pdefVit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="pdefVit">PDEF/VIT</th>
+                <td mat-cell *matCellDef="let row">{{row.pdefVit}}</td>
+              </ng-container>
+              
+              <!-- mdefInt -->
+              <ng-container matColumnDef="mdefInt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="mdefInt">MDEF/INT</th>
+                <td mat-cell *matCellDef="let row">{{row.mdefInt}}</td>
+              </ng-container>
+              
+              <!-- critAgi -->
+              <ng-container matColumnDef="critAgi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="critAgi">CRIT/AGI</th>
+                <td mat-cell *matCellDef="let row">{{row.critAgi}}</td>
+              </ng-container>
+            </table>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
